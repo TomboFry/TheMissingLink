@@ -27,24 +27,6 @@
             <kind>1</kind>
             <string>/// Menu setup
 
-enum MenuItem {
-    Text,
-    Type,
-    Enabled
-}
-
-// Determines whether a menu item uses Left/Right or Select Controls
-enum MenuItemType {
-    Action,
-    Variable
-}
-
-enum MenuAlign {
-    Left,
-    Right,
-    Center
-}
-
 // Create Menu Items
 if (!variable_instance_exists(self, 'items')) {
     items[0] = ds_map_create();

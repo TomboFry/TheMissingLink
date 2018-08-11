@@ -297,12 +297,49 @@ ctrl[Controls.AxisVert, 2] = gp_axisrv;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Player Enum
+            <string>/// Enum Values
 
+
+// Player / Enemy Facing Directions
 enum Facing {
      Left,
      Right
 }
+
+enum InventoryItemType {
+    Weapon,
+    Core,
+    Misc
+}
+
+enum EnemyState {
+    Idle,
+    Walking,
+    Attacking,
+    Dead
+}
+
+
+enum MenuItem {
+    Text,
+    Type,
+    Enabled
+}
+
+// Menu Enums
+
+// Determines whether a menu item uses Left/Right or Select Controls
+enum MenuItemType {
+    Action,
+    Variable
+}
+
+enum MenuAlign {
+    Left,
+    Right,
+    Center
+}
+
 
 </string>
           </argument>

@@ -27,12 +27,6 @@
             <kind>1</kind>
             <string>/// Set up Inventory Item
 
-enum InventoryItemType {
-    Weapon,
-    Core,
-    Misc
-}
-
 // Item Metadata: Name, Description, Type
 if (!variable_instance_exists(self, 'name')) name = 'Broken Item';
 if (!variable_instance_exists(self, 'description')) description = 'Existence is painful';
