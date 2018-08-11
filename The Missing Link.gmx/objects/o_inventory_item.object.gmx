@@ -100,11 +100,12 @@ if (slot != -1) {
     
     persistent = true;
 
-    inv.inventory[# row, col] = self;
+    inv.inventory[# col, row] = self;
 
     in_inventory = true;
     interactable = false;
 }
+
 </string>
           </argument>
         </arguments>

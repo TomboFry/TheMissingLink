@@ -148,13 +148,13 @@ draw_rectangle(view_xview[view], view_yview[view], view_xview[view] + view_wview
 draw_set_alpha(1);
 draw_set_colour(c_white);
 
-for (var j = 0; j &lt; inv.cols; j++) {
-    for (var i = 0; i &lt; inv.rows; i++) {
-        var left = draw_x + (grid_size * j) + (item_spacing * j);
-        var right = draw_x + (grid_size * (j + 1)) + (item_spacing * j);
-        var top = draw_y + (grid_size * i) + (item_spacing * i);
-        var bottom = draw_y + (grid_size * (i + 1)) + (item_spacing * i);
-        var selected = selected_row == i &amp;&amp; selected_col == j;
+for (var j = 0; j &lt; inv.rows; j++) {
+    for (var i = 0; i &lt; inv.cols; i++) {
+        var left = draw_x + (grid_size * i) + (item_spacing * i);
+        var right = draw_x + (grid_size * (i + 1)) + (item_spacing * i);
+        var top = draw_y + (grid_size * j) + (item_spacing * j);
+        var bottom = draw_y + (grid_size * (j + 1)) + (item_spacing * j);
+        var selected = selected_col == i &amp;&amp; selected_row == j;
         var width = selected;
 
         draw_set_colour(c_white);
@@ -174,9 +174,9 @@ for (var j = 0; j &lt; inv.cols; j++) {
     }
 }
 
-var desc_x = draw_x + (grid_size + item_spacing) * inv.cols;
+var desc_x = draw_x + ((grid_size + item_spacing) * inv.cols) + offset_x;
 
-var selected_item = inv.inventory[# selected_row, selected_col];
+var selected_item = inv.inventory[# selected_col, selected_row];
 if (selected_item != noone) {
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
@@ -184,7 +184,7 @@ if (selected_item != noone) {
     draw_set_font(fnt_large);
     draw_text(desc_x, draw_y, selected_item.name);
     draw_set_font(fnt_main);
-    draw_text_ext(desc_x, draw_y + 12, selected_item.description, string_height('d'), 96);
+    draw_text_ext(desc_x, draw_y + 12, selected_item.description, string_height('d'), 128);
 }
 </string>
           </argument>

@@ -27,13 +27,13 @@
             <kind>1</kind>
             <string>/// Set up inventory
 
-rows = 3;
-cols = 5;
+rows = 4;
+cols = 8;
 
-inventory = ds_grid_create(rows, cols);
+inventory = ds_grid_create(cols, rows);
 
-for (var j = 0; j &lt; cols; j++) {
-    for (var i = 0; i &lt; rows; i++) {
+for (var j = 0; j &lt; rows; j++) {
+    for (var i = 0; i &lt; cols; i++) {
         inventory[# i, j] = noone;
     }
 }

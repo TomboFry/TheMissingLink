@@ -5,4 +5,4 @@
 var inv = argument0;
 var index = argument1;
 
-return index mod inv.rows;
+return index mod inv.cols;

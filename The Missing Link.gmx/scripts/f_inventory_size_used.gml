@@ -3,8 +3,8 @@
 var inv = argument0;
 var count = 0;
 
-for (var j = 0; j < inv.cols; j++) {
-    for (var i = 0; i < inv.rows; i++) {
+for (var j = 0; j < inv.rows; j++) {
+    for (var i = 0; i < inv.cols; i++) {
         if (inv.inventory[# i, j] != noone) count++;
     }
 }

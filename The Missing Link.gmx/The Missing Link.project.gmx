@@ -9,6 +9,7 @@
     <sprite>sprites\s_wall</sprite>
     <sprite>sprites\s_player</sprite>
     <sprite>sprites\s_key</sprite>
+    <sprite>sprites\s_weapon</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
