@@ -332,6 +332,36 @@ can_play = true;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Screen setup
+
+screen_height = 192;
+aspect_ratio = clamp(display_get_width() / display_get_height(), 1.25, 2.4);
+screen_width = round((screen_height * aspect_ratio) / 64) * 64;
+
+show_message(string(screen_width) + 'x' + string(screen_height) + ' (' + string(screen_height * aspect_ratio) + ')');
+
+// window_set_size(screen_width * 2, screen_height * 2);
+// window_center();
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="1">
       <action>
@@ -450,6 +480,38 @@ if (instance_exists(o_menu_parent)) can_play = false;
 
 if (f_key_down(Controls.Pause) &amp;&amp; can_play) {
     instance_create(x, y, o_menu_pause);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>view_enabled = true;
+view_visible[0] = true;
+
+// 2 = max players
+for (var i = 0; i &lt; 2; i++) {
+    view_wview[i] = screen_width;
+    view_hview[i] = screen_height;
+    view_wport[i] = screen_width * 2;
+    view_hport[i] = screen_height * 2;
 }
 </string>
           </argument>

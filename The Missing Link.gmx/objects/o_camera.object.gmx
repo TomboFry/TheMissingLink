@@ -101,9 +101,16 @@ bottom_text = '';
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Can Play?
+            <string>/// Init Camera
 
-if (!o_main.can_play) exit;
+if (init == false &amp;&amp; target != noone) {
+    view_enabled = true;
+    view_visible[view] = true;
+    cam_width = view_wview[view];
+    cam_height = view_hview[view];
+
+    init = true;
+}
 </string>
           </argument>
         </arguments>
@@ -124,20 +131,9 @@ if (!o_main.can_play) exit;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Init Camera
+            <string>/// Can Play?
 
-if (init == false &amp;&amp; target != noone) {
-    view_enabled = true;
-    view_visible[view] = true;
-    view_wview[view] = 320;
-    view_hview[view] = 180;
-    view_wport[view] = 640;
-    view_hport[view] = 360;
-    cam_width = view_wview[view];
-    cam_height = view_hview[view];
-    
-    init = true;
-}
+if (!o_main.can_play || !target.can_play) exit;
 </string>
           </argument>
         </arguments>

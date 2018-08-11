@@ -21,6 +21,14 @@
     </scripts>
     <script>scripts\f_time_scale.gml</script>
     <script>scripts\f_camera_text.gml</script>
+    <scripts name="Inventory">
+      <script>scripts\f_inventory_size_total.gml</script>
+      <script>scripts\f_inventory_size_used.gml</script>
+      <script>scripts\f_inventory_size_free.gml</script>
+      <script>scripts\f_inventory_slot_free.gml</script>
+      <script>scripts\f_inventory_index_row.gml</script>
+      <script>scripts\f_inventory_index_col.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
@@ -29,6 +37,9 @@
   <objects name="objects">
     <objects name="Controllers">
       <object>objects\o_main</object>
+      <object>objects\o_inventory</object>
+      <object>objects\o_inventory_item</object>
+      <object>objects\o_inventory_draw</object>
     </objects>
     <objects name="Gameplay">
       <objects name="Player">
