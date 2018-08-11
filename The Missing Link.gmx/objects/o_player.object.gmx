@@ -376,6 +376,7 @@ if (f_key(Controls.WeaponFire)) {
             if ((current_weapon.fire_rate == 0 &amp;&amp; fire_held == 0) || (current_weapon.fire_rate &gt; 0 &amp;&amp; fire_held mod current_weapon.fire_rate == 0)) {
                 var fire = instance_create(x, y, current_weapon.fire_object);
                 fire.parent = self;
+                fire.damage = current_weapon.damage;
                 with (fire) event_user(0);
         
                 current_weapon.ammo--;

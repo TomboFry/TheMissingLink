@@ -314,8 +314,8 @@ enum InventoryItemType {
 
 enum EnemyState {
     Idle,
-    Walking,
-    Attacking,
+    Walk,
+    Attack,
     Dead
 }
 

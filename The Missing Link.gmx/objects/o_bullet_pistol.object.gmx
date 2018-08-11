@@ -28,6 +28,10 @@
             <string>alpha = 1;
 len = 0;
 dir = 0;
+
+// Will be overwritten:
+parent = noone;
+damage = 0;
 </string>
           </argument>
         </arguments>
@@ -97,9 +101,10 @@ while (collision == false &amp;&amp; len &lt; max_len) {
         break;
     }
 
-    if (col_enemy != noone) {
-        // Deal enemy damage
+    if (col_enemy != noone &amp;&amp; col_enemy.state != EnemyState.Dead) {
+        // Deal enemy damage if enemy not already dead
         collision = true;
+        col_enemy.hp -= damage;
         break;
     }
 

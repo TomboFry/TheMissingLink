@@ -56,6 +56,9 @@ event_inherited();
             <kind>1</kind>
             <string>/// Set up weapon information (modify on child objects)
 
+// How much damage the weapon does per hit to the enemy
+if (!variable_instance_exists(self, 'damage')) damage = 1;
+
 if (!variable_instance_exists(self, 'ammo_max')) ammo_max = 100;
 ammo = irandom_range(ammo_max * 0.75, ammo_max);
 

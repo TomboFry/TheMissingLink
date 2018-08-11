@@ -267,6 +267,7 @@ draw_text(view_xview[view], view_yview[view] + 10, string(view_xview[view]) + ';
             <kind>1</kind>
             <string>/// Bottom text
 
+draw_set_alpha(1);
 draw_set_font(fnt_main);
 draw_set_colour(c_white);
 
