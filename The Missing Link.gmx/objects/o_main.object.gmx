@@ -27,157 +27,157 @@
             <kind>1</kind>
             <string>/// Keyboard Controls Setup
 
-o_main.keys[0] = ds_map_create();
+keys[0] = ds_map_create();
 
-ds_map_add(o_main.keys[0], vk_add, "Add");
-ds_map_add(o_main.keys[0], vk_alt, "Alt");
-ds_map_add(o_main.keys[0], vk_backspace, "Backspace");
-ds_map_add(o_main.keys[0], vk_control, "Control");
-ds_map_add(o_main.keys[0], vk_decimal, ".");
-ds_map_add(o_main.keys[0], vk_delete, "Delete");
-ds_map_add(o_main.keys[0], vk_divide, "/");
-ds_map_add(o_main.keys[0], vk_down, "Down");
-ds_map_add(o_main.keys[0], vk_end, "End");
-ds_map_add(o_main.keys[0], vk_enter, "Enter");
-ds_map_add(o_main.keys[0], vk_escape, "Escape");
-ds_map_add(o_main.keys[0], vk_f1, "F1");
-ds_map_add(o_main.keys[0], vk_f2, "F2");
-ds_map_add(o_main.keys[0], vk_f3, "F3");
-ds_map_add(o_main.keys[0], vk_f4, "F4");
-ds_map_add(o_main.keys[0], vk_f5, "F5");
-ds_map_add(o_main.keys[0], vk_f6, "F6");
-ds_map_add(o_main.keys[0], vk_f7, "F7");
-ds_map_add(o_main.keys[0], vk_f8, "F8");
-ds_map_add(o_main.keys[0], vk_f9, "F9");
-ds_map_add(o_main.keys[0], vk_f10, "F10");
-ds_map_add(o_main.keys[0], vk_f11, "F11");
-ds_map_add(o_main.keys[0], vk_f12, "F12");
-ds_map_add(o_main.keys[0], vk_home, "Home");
-ds_map_add(o_main.keys[0], vk_insert, "Insert");
-ds_map_add(o_main.keys[0], vk_left, "Left");
-ds_map_add(o_main.keys[0], vk_multiply, "*");
-ds_map_add(o_main.keys[0], vk_numpad0, "Numpad 0");
-ds_map_add(o_main.keys[0], vk_numpad1, "Numpad 1");
-ds_map_add(o_main.keys[0], vk_numpad2, "Numpad 2");
-ds_map_add(o_main.keys[0], vk_numpad3, "Numpad 3");
-ds_map_add(o_main.keys[0], vk_numpad4, "Numpad 4");
-ds_map_add(o_main.keys[0], vk_numpad5, "Numpad 5");
-ds_map_add(o_main.keys[0], vk_numpad6, "Numpad 6");
-ds_map_add(o_main.keys[0], vk_numpad7, "Numpad 7");
-ds_map_add(o_main.keys[0], vk_numpad8, "Numpad 8");
-ds_map_add(o_main.keys[0], vk_numpad9, "Numpad 9");
-ds_map_add(o_main.keys[0], vk_pagedown, "Page Down");
-ds_map_add(o_main.keys[0], vk_pageup, "Page Up");
-ds_map_add(o_main.keys[0], vk_pause, "Pause");
-ds_map_add(o_main.keys[0], vk_printscreen, "Print Screen");
-ds_map_add(o_main.keys[0], vk_return, "Return");
-ds_map_add(o_main.keys[0], vk_right, "Right");
-ds_map_add(o_main.keys[0], vk_shift, "Shift");
-ds_map_add(o_main.keys[0], vk_space, "Space");
-ds_map_add(o_main.keys[0], vk_subtract, "Subtract");
-ds_map_add(o_main.keys[0], vk_tab, "Tab");
-ds_map_add(o_main.keys[0], vk_up, "Up");
-ds_map_add(o_main.keys[0], ord('1'), "1");
-ds_map_add(o_main.keys[0], ord('2'), "2");
-ds_map_add(o_main.keys[0], ord('3'), "3");
-ds_map_add(o_main.keys[0], ord('4'), "4");
-ds_map_add(o_main.keys[0], ord('5'), "5");
-ds_map_add(o_main.keys[0], ord('6'), "6");
-ds_map_add(o_main.keys[0], ord('7'), "7");
-ds_map_add(o_main.keys[0], ord('8'), "8");
-ds_map_add(o_main.keys[0], ord('9'), "9");
-ds_map_add(o_main.keys[0], ord('0'), "0");
-ds_map_add(o_main.keys[0], ord('-'), "-");
-ds_map_add(o_main.keys[0], ord('='), "=");
-ds_map_add(o_main.keys[0], ord('!'), "!");
-ds_map_add(o_main.keys[0], ord('"'), '"');
-ds_map_add(o_main.keys[0], ord('$'), "$");
-ds_map_add(o_main.keys[0], ord('%'), "%");
-ds_map_add(o_main.keys[0], ord('^'), "^");
-ds_map_add(o_main.keys[0], ord('&amp;'), "&amp;");
-ds_map_add(o_main.keys[0], ord('£'), "£");
-ds_map_add(o_main.keys[0], ord('*'), "*");
-ds_map_add(o_main.keys[0], ord('('), "(");
-ds_map_add(o_main.keys[0], ord(')'), ")");
-ds_map_add(o_main.keys[0], ord('_'), "_");
-ds_map_add(o_main.keys[0], ord('+'), "+");
-ds_map_add(o_main.keys[0], ord('Q'), "Q");
-ds_map_add(o_main.keys[0], ord('W'), "W");
-ds_map_add(o_main.keys[0], ord('E'), "E");
-ds_map_add(o_main.keys[0], ord('R'), "R");
-ds_map_add(o_main.keys[0], ord('T'), "T");
-ds_map_add(o_main.keys[0], ord('Y'), "Y");
-ds_map_add(o_main.keys[0], ord('U'), "U");
-ds_map_add(o_main.keys[0], ord('I'), "I");
-ds_map_add(o_main.keys[0], ord('O'), "O");
-ds_map_add(o_main.keys[0], ord('P'), "P");
-ds_map_add(o_main.keys[0], ord('A'), "A");
-ds_map_add(o_main.keys[0], ord('S'), "S");
-ds_map_add(o_main.keys[0], ord('D'), "D");
-ds_map_add(o_main.keys[0], ord('F'), "F");
-ds_map_add(o_main.keys[0], ord('G'), "G");
-ds_map_add(o_main.keys[0], ord('H'), "H");
-ds_map_add(o_main.keys[0], ord('J'), "J");
-ds_map_add(o_main.keys[0], ord('K'), "K");
-ds_map_add(o_main.keys[0], ord('L'), "L");
-ds_map_add(o_main.keys[0], ord('['), "[");
-ds_map_add(o_main.keys[0], ord(']'), "]");
-ds_map_add(o_main.keys[0], ord('{'), "{");
-ds_map_add(o_main.keys[0], ord('}'), "}");
-ds_map_add(o_main.keys[0], ord(';'), ";");
-ds_map_add(o_main.keys[0], ord(':'), ":");
-ds_map_add(o_main.keys[0], ord("'"), "'");
-ds_map_add(o_main.keys[0], ord('@'), "@");
-ds_map_add(o_main.keys[0], ord('#'), "#");
-ds_map_add(o_main.keys[0], ord('~'), "~");
-ds_map_add(o_main.keys[0], ord('|'), "|");
-ds_map_add(o_main.keys[0], ord('\'), "\");
-ds_map_add(o_main.keys[0], ord('Z'), "Z");
-ds_map_add(o_main.keys[0], ord('X'), "X");
-ds_map_add(o_main.keys[0], ord('C'), "C");
-ds_map_add(o_main.keys[0], ord('V'), "V");
-ds_map_add(o_main.keys[0], ord('B'), "B");
-ds_map_add(o_main.keys[0], ord('N'), "N");
-ds_map_add(o_main.keys[0], ord('M'), "M");
-ds_map_add(o_main.keys[0], ord(','), ",");
-ds_map_add(o_main.keys[0], ord('&lt;'), "&lt;");
-ds_map_add(o_main.keys[0], ord('.'), ".");
-ds_map_add(o_main.keys[0], ord('&gt;'), "&gt;");
-ds_map_add(o_main.keys[0], ord('/'), "/");
-ds_map_add(o_main.keys[0], ord('?'), "?");
-ds_map_add(o_main.keys[0], ord('`'), "`");
-ds_map_add(o_main.keys[0], ord('¬'), "¬");
-ds_map_add(o_main.keys[0], ord('¦'), "¦");
-ds_map_add(o_main.keys[0], mb_left, 'Left Click');
-ds_map_add(o_main.keys[0], mb_right, 'Right Click');
+ds_map_add(keys[0], vk_add, "Add");
+ds_map_add(keys[0], vk_alt, "Alt");
+ds_map_add(keys[0], vk_backspace, "Backspace");
+ds_map_add(keys[0], vk_control, "Control");
+ds_map_add(keys[0], vk_decimal, ".");
+ds_map_add(keys[0], vk_delete, "Delete");
+ds_map_add(keys[0], vk_divide, "/");
+ds_map_add(keys[0], vk_down, "Down");
+ds_map_add(keys[0], vk_end, "End");
+ds_map_add(keys[0], vk_enter, "Enter");
+ds_map_add(keys[0], vk_escape, "Escape");
+ds_map_add(keys[0], vk_f1, "F1");
+ds_map_add(keys[0], vk_f2, "F2");
+ds_map_add(keys[0], vk_f3, "F3");
+ds_map_add(keys[0], vk_f4, "F4");
+ds_map_add(keys[0], vk_f5, "F5");
+ds_map_add(keys[0], vk_f6, "F6");
+ds_map_add(keys[0], vk_f7, "F7");
+ds_map_add(keys[0], vk_f8, "F8");
+ds_map_add(keys[0], vk_f9, "F9");
+ds_map_add(keys[0], vk_f10, "F10");
+ds_map_add(keys[0], vk_f11, "F11");
+ds_map_add(keys[0], vk_f12, "F12");
+ds_map_add(keys[0], vk_home, "Home");
+ds_map_add(keys[0], vk_insert, "Insert");
+ds_map_add(keys[0], vk_left, "Left");
+ds_map_add(keys[0], vk_multiply, "*");
+ds_map_add(keys[0], vk_numpad0, "Numpad 0");
+ds_map_add(keys[0], vk_numpad1, "Numpad 1");
+ds_map_add(keys[0], vk_numpad2, "Numpad 2");
+ds_map_add(keys[0], vk_numpad3, "Numpad 3");
+ds_map_add(keys[0], vk_numpad4, "Numpad 4");
+ds_map_add(keys[0], vk_numpad5, "Numpad 5");
+ds_map_add(keys[0], vk_numpad6, "Numpad 6");
+ds_map_add(keys[0], vk_numpad7, "Numpad 7");
+ds_map_add(keys[0], vk_numpad8, "Numpad 8");
+ds_map_add(keys[0], vk_numpad9, "Numpad 9");
+ds_map_add(keys[0], vk_pagedown, "Page Down");
+ds_map_add(keys[0], vk_pageup, "Page Up");
+ds_map_add(keys[0], vk_pause, "Pause");
+ds_map_add(keys[0], vk_printscreen, "Print Screen");
+ds_map_add(keys[0], vk_return, "Return");
+ds_map_add(keys[0], vk_right, "Right");
+ds_map_add(keys[0], vk_shift, "Shift");
+ds_map_add(keys[0], vk_space, "Space");
+ds_map_add(keys[0], vk_subtract, "Subtract");
+ds_map_add(keys[0], vk_tab, "Tab");
+ds_map_add(keys[0], vk_up, "Up");
+ds_map_add(keys[0], ord('1'), "1");
+ds_map_add(keys[0], ord('2'), "2");
+ds_map_add(keys[0], ord('3'), "3");
+ds_map_add(keys[0], ord('4'), "4");
+ds_map_add(keys[0], ord('5'), "5");
+ds_map_add(keys[0], ord('6'), "6");
+ds_map_add(keys[0], ord('7'), "7");
+ds_map_add(keys[0], ord('8'), "8");
+ds_map_add(keys[0], ord('9'), "9");
+ds_map_add(keys[0], ord('0'), "0");
+ds_map_add(keys[0], ord('-'), "-");
+ds_map_add(keys[0], ord('='), "=");
+ds_map_add(keys[0], ord('!'), "!");
+ds_map_add(keys[0], ord('"'), '"');
+ds_map_add(keys[0], ord('$'), "$");
+ds_map_add(keys[0], ord('%'), "%");
+ds_map_add(keys[0], ord('^'), "^");
+ds_map_add(keys[0], ord('&amp;'), "&amp;");
+ds_map_add(keys[0], ord('£'), "£");
+ds_map_add(keys[0], ord('*'), "*");
+ds_map_add(keys[0], ord('('), "(");
+ds_map_add(keys[0], ord(')'), ")");
+ds_map_add(keys[0], ord('_'), "_");
+ds_map_add(keys[0], ord('+'), "+");
+ds_map_add(keys[0], ord('Q'), "Q");
+ds_map_add(keys[0], ord('W'), "W");
+ds_map_add(keys[0], ord('E'), "E");
+ds_map_add(keys[0], ord('R'), "R");
+ds_map_add(keys[0], ord('T'), "T");
+ds_map_add(keys[0], ord('Y'), "Y");
+ds_map_add(keys[0], ord('U'), "U");
+ds_map_add(keys[0], ord('I'), "I");
+ds_map_add(keys[0], ord('O'), "O");
+ds_map_add(keys[0], ord('P'), "P");
+ds_map_add(keys[0], ord('A'), "A");
+ds_map_add(keys[0], ord('S'), "S");
+ds_map_add(keys[0], ord('D'), "D");
+ds_map_add(keys[0], ord('F'), "F");
+ds_map_add(keys[0], ord('G'), "G");
+ds_map_add(keys[0], ord('H'), "H");
+ds_map_add(keys[0], ord('J'), "J");
+ds_map_add(keys[0], ord('K'), "K");
+ds_map_add(keys[0], ord('L'), "L");
+ds_map_add(keys[0], ord('['), "[");
+ds_map_add(keys[0], ord(']'), "]");
+ds_map_add(keys[0], ord('{'), "{");
+ds_map_add(keys[0], ord('}'), "}");
+ds_map_add(keys[0], ord(';'), ";");
+ds_map_add(keys[0], ord(':'), ":");
+ds_map_add(keys[0], ord("'"), "'");
+ds_map_add(keys[0], ord('@'), "@");
+ds_map_add(keys[0], ord('#'), "#");
+ds_map_add(keys[0], ord('~'), "~");
+ds_map_add(keys[0], ord('|'), "|");
+ds_map_add(keys[0], ord('\'), "\");
+ds_map_add(keys[0], ord('Z'), "Z");
+ds_map_add(keys[0], ord('X'), "X");
+ds_map_add(keys[0], ord('C'), "C");
+ds_map_add(keys[0], ord('V'), "V");
+ds_map_add(keys[0], ord('B'), "B");
+ds_map_add(keys[0], ord('N'), "N");
+ds_map_add(keys[0], ord('M'), "M");
+ds_map_add(keys[0], ord(','), ",");
+ds_map_add(keys[0], ord('&lt;'), "&lt;");
+ds_map_add(keys[0], ord('.'), ".");
+ds_map_add(keys[0], ord('&gt;'), "&gt;");
+ds_map_add(keys[0], ord('/'), "/");
+ds_map_add(keys[0], ord('?'), "?");
+ds_map_add(keys[0], ord('`'), "`");
+ds_map_add(keys[0], ord('¬'), "¬");
+ds_map_add(keys[0], ord('¦'), "¦");
+ds_map_add(keys[0], mb_left, 'Left Click');
+ds_map_add(keys[0], mb_right, 'Right Click');
 
-o_main.keys[1] = ds_map_create();
+keys[1] = ds_map_create();
 
-ds_map_add(o_main.keys[1], gp_face1,      "A");
-ds_map_add(o_main.keys[1], gp_face2,      "B");
-ds_map_add(o_main.keys[1], gp_face3,      "X");
-ds_map_add(o_main.keys[1], gp_face4,      "Y");
-ds_map_add(o_main.keys[1], gp_shoulderl,  "LB");
-ds_map_add(o_main.keys[1], gp_shoulderlb, "LT");
-ds_map_add(o_main.keys[1], gp_shoulderr,  "RB");
-ds_map_add(o_main.keys[1], gp_shoulderrb, "RT");
-ds_map_add(o_main.keys[1], gp_padu,       "Up");
-ds_map_add(o_main.keys[1], gp_padd,       "Down");
-ds_map_add(o_main.keys[1], gp_padl,       "Left");
-ds_map_add(o_main.keys[1], gp_padr,       "Right");
-ds_map_add(o_main.keys[1], gp_stickl,     "L-Stick");
-ds_map_add(o_main.keys[1], gp_stickr,     "R-Stick");
-ds_map_add(o_main.keys[1], gp_select,     "Back");
-ds_map_add(o_main.keys[1], gp_start,      "Start");
+ds_map_add(keys[1], gp_face1,      "A");
+ds_map_add(keys[1], gp_face2,      "B");
+ds_map_add(keys[1], gp_face3,      "X");
+ds_map_add(keys[1], gp_face4,      "Y");
+ds_map_add(keys[1], gp_shoulderl,  "LB");
+ds_map_add(keys[1], gp_shoulderlb, "LT");
+ds_map_add(keys[1], gp_shoulderr,  "RB");
+ds_map_add(keys[1], gp_shoulderrb, "RT");
+ds_map_add(keys[1], gp_padu,       "Up");
+ds_map_add(keys[1], gp_padd,       "Down");
+ds_map_add(keys[1], gp_padl,       "Left");
+ds_map_add(keys[1], gp_padr,       "Right");
+ds_map_add(keys[1], gp_stickl,     "L-Stick");
+ds_map_add(keys[1], gp_stickr,     "R-Stick");
+ds_map_add(keys[1], gp_select,     "Back");
+ds_map_add(keys[1], gp_start,      "Start");
 
 // Use Gamepads? (Boolean)
-o_main.gp_using = false;
+gp_using = false;
 
 // Gamepad currently in use (Integer)
-o_main.gp_in_use = -1;
+gp_in_use = -1;
 
 // Vibrate Gamepads? (Boolean)
-o_main.gp_vibrate = true;
+gp_vibrate = true;
 
 enum Controls {
     Up,
@@ -189,7 +189,9 @@ enum Controls {
     WeaponFire,
     Pause,
     Fullscreen,
-    Inventory
+    Inventory,
+    AxisVert,
+    AxisHorz
 }
 
 /*
@@ -199,45 +201,53 @@ enum Controls {
  * 2 = GP input (eg. gp_face1 or gp_padu)
  */
 
-o_main.ctrl[Controls.Up, 0] = "Up";
-o_main.ctrl[Controls.Up, 1] = vk_up;
-o_main.ctrl[Controls.Up, 2] = gp_padu;
+ctrl[Controls.Up, 0] = "Up";
+ctrl[Controls.Up, 1] = vk_up;
+ctrl[Controls.Up, 2] = gp_padu;
 
-o_main.ctrl[Controls.Down, 0] = "Down";
-o_main.ctrl[Controls.Down, 1] = vk_down;
-o_main.ctrl[Controls.Down, 2] = gp_padd;
+ctrl[Controls.Down, 0] = "Down";
+ctrl[Controls.Down, 1] = vk_down;
+ctrl[Controls.Down, 2] = gp_padd;
 
-o_main.ctrl[Controls.Left, 0] = "Left";
-o_main.ctrl[Controls.Left, 1] = vk_left;
-o_main.ctrl[Controls.Left, 2] = gp_padl;
+ctrl[Controls.Left, 0] = "Left";
+ctrl[Controls.Left, 1] = vk_left;
+ctrl[Controls.Left, 2] = gp_padl;
 
-o_main.ctrl[Controls.Right, 0] = "Right";
-o_main.ctrl[Controls.Right, 1] = vk_right;
-o_main.ctrl[Controls.Right, 2] = gp_padr;
+ctrl[Controls.Right, 0] = "Right";
+ctrl[Controls.Right, 1] = vk_right;
+ctrl[Controls.Right, 2] = gp_padr;
 
-o_main.ctrl[Controls.Action, 0] = "Action";
-o_main.ctrl[Controls.Action, 1] = ord('e');
-o_main.ctrl[Controls.Action, 2] = gp_face3;
+ctrl[Controls.Action, 0] = "Action";
+ctrl[Controls.Action, 1] = ord('e');
+ctrl[Controls.Action, 2] = gp_face3;
 
-o_main.ctrl[Controls.Confirm, 0] = "Confirm";
-o_main.ctrl[Controls.Confirm, 1] = vk_space;
-o_main.ctrl[Controls.Confirm, 2] = gp_face1;
+ctrl[Controls.Confirm, 0] = "Confirm";
+ctrl[Controls.Confirm, 1] = vk_space;
+ctrl[Controls.Confirm, 2] = gp_face1;
 
-o_main.ctrl[Controls.WeaponFire, 0] = "Fire Weapon";
-o_main.ctrl[Controls.WeaponFire, 1] = mb_left;
-o_main.ctrl[Controls.WeaponFire, 2] = gp_shoulderrb;
+ctrl[Controls.WeaponFire, 0] = "Fire Weapon";
+ctrl[Controls.WeaponFire, 1] = mb_left;
+ctrl[Controls.WeaponFire, 2] = gp_shoulderrb;
 
-o_main.ctrl[Controls.Pause, 0] = "Pause";
-o_main.ctrl[Controls.Pause, 1] = vk_escape;
-o_main.ctrl[Controls.Pause, 2] = gp_start;
+ctrl[Controls.Pause, 0] = "Pause";
+ctrl[Controls.Pause, 1] = vk_escape;
+ctrl[Controls.Pause, 2] = gp_start;
 
-o_main.ctrl[Controls.Fullscreen, 0] = "Fullscreen";
-o_main.ctrl[Controls.Fullscreen, 1] = vk_f11;
-o_main.ctrl[Controls.Fullscreen, 2] = gp_stickl;
+ctrl[Controls.Fullscreen, 0] = "Fullscreen";
+ctrl[Controls.Fullscreen, 1] = vk_f11;
+ctrl[Controls.Fullscreen, 2] = gp_stickl;
 
-o_main.ctrl[Controls.Inventory, 0] = "Inventory";
-o_main.ctrl[Controls.Inventory, 1] = ord('q');
-o_main.ctrl[Controls.Inventory, 2] = gp_select;
+ctrl[Controls.Inventory, 0] = "Inventory";
+ctrl[Controls.Inventory, 1] = ord('q');
+ctrl[Controls.Inventory, 2] = gp_select;
+
+ctrl[Controls.AxisHorz, 0] = "Horizontal Axis";
+ctrl[Controls.AxisHorz, 1] = undefined;
+ctrl[Controls.AxisHorz, 2] = gp_axisrh;
+
+ctrl[Controls.AxisVert, 0] = "Vertical Axis";
+ctrl[Controls.AxisVert, 1] = undefined;
+ctrl[Controls.AxisVert, 2] = gp_axisrv;
 
 </string>
           </argument>
