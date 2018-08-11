@@ -69,9 +69,11 @@
         <object>objects\o_inventory_item</object>
         <object>objects\o_inventory_draw</object>
       </objects>
-      <object>objects\o_poi</object>
       <objects name="Enemies">
         <object>objects\o_enemy</object>
+      </objects>
+      <objects name="Others">
+        <object>objects\o_poi</object>
       </objects>
     </objects>
     <objects name="Menus">
