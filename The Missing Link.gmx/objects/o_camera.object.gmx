@@ -53,6 +53,10 @@ shake = 0;
 
 // Hint Text
 bottom_text = '';
+
+// Death State Polish
+dead_alpha = 0;
+
 </string>
           </argument>
         </arguments>
@@ -239,12 +243,7 @@ view_yview[view] = target_y + random_range(-real_shake, real_shake);
           <argument>
             <kind>1</kind>
             <string>/// Debug
-/*
-draw_set_colour(c_white);
-draw_text(view_xview[view], view_yview[view], init);
-draw_text(view_xview[view], view_yview[view] + 10, string(view_xview[view]) + '; ' + string(view_yview[view]));
 
-*/
 </string>
           </argument>
         </arguments>
@@ -267,7 +266,7 @@ draw_text(view_xview[view], view_yview[view] + 10, string(view_xview[view]) + ';
             <kind>1</kind>
             <string>/// Bottom text
 
-draw_set_alpha(1);
+draw_set_alpha(1 - dead_alpha);
 draw_set_font(fnt_main);
 draw_set_colour(c_white);
 
@@ -281,16 +280,6 @@ draw_text(
     view_yview[view] + view_hview[view] - string_height(bottom_text) - bottom,
     bottom_text
 );
-
-/*
-draw_rectangle(
-    view_xview[view] + (view_wview[view] / 2) - 8,
-    view_yview[view] + view_hview[view] - string_height(bottom_text) - bottom - 8,
-    view_xview[view] + (view_wview[view] / 2) + 8,
-    view_yview[view] + view_hview[view] - string_height(bottom_text) + 6,
-    false
-);
-*/
 
 </string>
           </argument>
@@ -323,6 +312,8 @@ var item_spacing = 3;
 
 var draw_x = view_xview[view] + 4;
 var draw_y = view_yview[view] + view_hview[view] - 4 - grid_size;
+
+draw_set_alpha(1 - dead_alpha);
 
 for (var i = 0; i &lt; inv.cols; i++) {
     var left = draw_x + (grid_size * i) + (item_spacing * i);
@@ -371,13 +362,79 @@ for (var i = 0; i &lt; inv.cols; i++) {
 
 draw_set_colour(c_white);
 var alpha = point_distance(target.x, target.y, target.aim_x, target.aim_y) / 64;
-draw_set_alpha(alpha);
+draw_set_alpha(alpha - dead_alpha);
 draw_line_width(target.aim_x - 6, target.aim_y, target.aim_x - 3, target.aim_y, 1);
 draw_line_width(target.aim_x + 6, target.aim_y, target.aim_x + 3, target.aim_y, 1);
 draw_line_width(target.aim_x, target.aim_y - 6, target.aim_x, target.aim_y - 3, 1);
 draw_line_width(target.aim_x, target.aim_y + 6, target.aim_x, target.aim_y + 3, 1);
 draw_set_alpha(1);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Health Bar (TBC)
+
+draw_set_alpha(1 - dead_alpha);
+draw_set_colour(c_black);
+draw_rectangle(view_xview[view], view_yview[view], view_xview[view] + view_wview[view], view_yview[view] + 2, false);
+draw_set_colour(c_fuchsia);
+draw_rectangle(view_xview[view], view_yview[view], view_xview[view] + (view_wview[view] * target.hp * 0.01), view_yview[view] + 2, false);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Death Screen
+
+if (target.is_dead) {
+    dead_alpha = lerp(dead_alpha, 1, 0.01 * f_time_scale());
+    
+    draw_set_alpha(dead_alpha * 0.75);
+    draw_set_colour(c_red);
+    draw_rectangle(view_xview[view], view_yview[view], view_xview[view] + view_wview[view], view_yview[view] + view_hview[view], false);
+    
+    draw_set_alpha(dead_alpha);
+    draw_set_colour(c_white);
+    
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_top);
+    draw_set_font(fnt_large);
+    draw_text_transformed(view_xview[view] + (view_wview[view] / 2), view_yview[view] + (view_hview[view] * 0.25), 'You Died.', 2, 2, 0);
+}
+
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

@@ -54,7 +54,7 @@ damage = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alpha -= 0.04;
+            <string>alpha -= 0.04 * f_time_scale();
 
 if (alpha &lt;= 0) instance_destroy();
 </string>
