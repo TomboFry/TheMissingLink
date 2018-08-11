@@ -56,7 +56,11 @@ spd_y = 0;
 interactable = noone;
 interactable_threshold = 20;
 
+// Personal "can_play" variable so other players can still play
 can_play = true;
+
+// Selected inventory item
+inventory_slot_selected = 0;
 </string>
           </argument>
         </arguments>
@@ -325,6 +329,14 @@ if (interactable_exists &amp;&amp; interactable.active == true &amp;&amp; f_key_
 if (f_key_down(Controls.Inventory) &amp;&amp; inventory_draw == noone) {
     inventory_draw = instance_create(x, y, o_inventory_draw);
     inventory_draw.target = self;
+}
+
+if (f_key_down(Controls.InventorySwap)) {
+    if (inventory_slot_selected &lt; inventory.cols - 1) {
+        inventory_slot_selected++;
+    } else {
+        inventory_slot_selected = 0;
+    }
 }
 
 </string>

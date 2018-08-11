@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Keyboard Controls Setup
+            <string>/// Controls Setup
 
 keys[0] = ds_map_create();
 
@@ -190,6 +190,7 @@ enum Controls {
     Pause,
     Fullscreen,
     Inventory,
+    InventorySwap,
     AxisVert,
     AxisHorz
 }
@@ -240,6 +241,10 @@ ctrl[Controls.Fullscreen, 2] = gp_stickl;
 ctrl[Controls.Inventory, 0] = "Inventory";
 ctrl[Controls.Inventory, 1] = ord('Q');
 ctrl[Controls.Inventory, 2] = gp_select;
+
+ctrl[Controls.InventorySwap, 0] = "Switch";
+ctrl[Controls.InventorySwap, 1] = vk_tab;
+ctrl[Controls.InventorySwap, 2] = gp_shoulderl;
 
 ctrl[Controls.AxisHorz, 0] = "Horizontal Axis";
 ctrl[Controls.AxisHorz, 1] = undefined;

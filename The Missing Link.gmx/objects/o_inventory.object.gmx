@@ -28,7 +28,7 @@
             <string>/// Set up inventory
 
 rows = 4;
-cols = 8;
+cols = 6;
 
 inventory = ds_grid_create(cols, rows);
 

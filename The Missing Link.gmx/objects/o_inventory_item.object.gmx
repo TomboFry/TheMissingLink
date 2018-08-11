@@ -92,7 +92,9 @@ event_inherited();
 var player = instance_nearest(x, y, o_player);
 var inv = player.inventory;
 
-var slot = f_inventory_slot_free(inv);
+show_debug_message(type == InventoryItemType.Weapon);
+
+var slot = f_inventory_slot_free(inv, type == InventoryItemType.Weapon);
 
 if (slot != -1) {
     var row = f_inventory_index_row(inv, slot);

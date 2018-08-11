@@ -150,10 +150,11 @@ draw_set_colour(c_white);
 
 for (var j = 0; j &lt; inv.rows; j++) {
     for (var i = 0; i &lt; inv.cols; i++) {
+        var separator = (j &gt; 0) * 4;
         var left = draw_x + (grid_size * i) + (item_spacing * i);
         var right = draw_x + (grid_size * (i + 1)) + (item_spacing * i);
-        var top = draw_y + (grid_size * j) + (item_spacing * j);
-        var bottom = draw_y + (grid_size * (j + 1)) + (item_spacing * j);
+        var top = draw_y + (grid_size * j) + (item_spacing * j) + separator;
+        var bottom = draw_y + (grid_size * (j + 1)) + (item_spacing * j) + separator;
         var selected = selected_col == i &amp;&amp; selected_row == j;
         var width = selected;
 
@@ -174,7 +175,7 @@ for (var j = 0; j &lt; inv.rows; j++) {
     }
 }
 
-var desc_x = draw_x + ((grid_size + item_spacing) * inv.cols) + offset_x;
+var desc_x = draw_x + ((grid_size + item_spacing) * inv.cols) + 4;
 
 var selected_item = inv.inventory[# selected_col, selected_row];
 if (selected_item != noone) {
