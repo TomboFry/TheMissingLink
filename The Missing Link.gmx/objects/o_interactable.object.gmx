@@ -29,6 +29,10 @@
 
 // This is set when the cursor is over or near the interactable
 active = false;
+
+// May be set to false if in the inventory
+interactable = true;
+
 </string>
           </argument>
         </arguments>

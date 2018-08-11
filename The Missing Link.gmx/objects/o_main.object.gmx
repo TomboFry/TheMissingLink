@@ -354,8 +354,6 @@ screen_height = 192;
 aspect_ratio = clamp(display_get_width() / display_get_height(), 1.25, 2.4);
 screen_width = round((screen_height * aspect_ratio) / 64) * 64;
 
-show_message(string(screen_width) + 'x' + string(screen_height) + ' (' + string(screen_height * aspect_ratio) + ')');
-
 // window_set_size(screen_width * 2, screen_height * 2);
 // window_center();
 </string>

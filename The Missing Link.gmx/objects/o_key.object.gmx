@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>o_interactable</parentName>
+  <parentName>o_inventory_item</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="7" enumb="10">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Interactable Action
+            <string>name = 'Key';
+description = 'I unlock things';
+type = InventoryItemType.Misc;
 
-instance_create(x, y, o_menu_parent);
-instance_destroy();
+event_inherited();
+
 </string>
           </argument>
         </arguments>

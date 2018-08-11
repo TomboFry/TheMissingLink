@@ -281,11 +281,13 @@ var interactable_exists = instance_exists(interactable) &amp;&amp; interactable 
 
 if (nearest != noone &amp;&amp; nearest != undefined) {
     var distance = point_distance(aim_x, aim_y, nearest.x, nearest.y);
-    if (distance &lt; interactable_threshold) {
+    if (distance &lt; interactable_threshold &amp;&amp; nearest.interactable) {
         with (o_interactable) active = false;
         interactable = nearest;
         interactable.active = true;
-        f_camera_text(camera, '[' + f_key_str(Controls.Action) + '] Interact');
+        var str = 'Interact';
+        if (nearest.object_index == o_inventory_item.object_index) str = 'Pick up';
+        f_camera_text(camera, '[' + f_key_str(Controls.Action) + '] ' + str);
     } else {
         nearest.active = false;
     }

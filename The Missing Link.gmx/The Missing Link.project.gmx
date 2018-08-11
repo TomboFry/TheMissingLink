@@ -37,16 +37,12 @@
   <objects name="objects">
     <objects name="Controllers">
       <object>objects\o_main</object>
-      <object>objects\o_inventory</object>
-      <object>objects\o_inventory_item</object>
-      <object>objects\o_inventory_draw</object>
     </objects>
     <objects name="Gameplay">
       <objects name="Player">
         <object>objects\o_player</object>
         <object>objects\o_camera</object>
       </objects>
-      <object>objects\o_poi</object>
       <objects name="Solid">
         <object>objects\o_wall_parent</object>
         <object>objects\o_wall</object>
@@ -55,6 +51,15 @@
         <object>objects\o_interactable</object>
         <object>objects\o_key</object>
       </objects>
+      <objects name="Weapon">
+        <object>objects\o_weapon</object>
+      </objects>
+      <objects name="Inventory">
+        <object>objects\o_inventory</object>
+        <object>objects\o_inventory_item</object>
+        <object>objects\o_inventory_draw</object>
+      </objects>
+      <object>objects\o_poi</object>
     </objects>
     <objects name="Menus">
       <object>objects\o_menu_parent</object>

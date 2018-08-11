@@ -7,9 +7,9 @@ var inv = argument0;
 
 var free_slot = 0;
 
-for (var j = 0; j < inv.cols; j++) {
-    for (var i = 0; i < inv.rows; i++) {
-        if (inv.inventory[# i, j] == noone) return free_slot;
+for (var j = 0; j < inv.rows; j++) {
+    for (var i = 0; i < inv.cols; i++) {
+        if (inv.inventory[# j, i] == noone) return free_slot;
         free_slot++;
     }
 }
