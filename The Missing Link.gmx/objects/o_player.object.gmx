@@ -51,6 +51,9 @@ walk_speed = 2;
 // Actual Current Speed
 spd_x = 0;
 spd_y = 0;
+
+// Interactable Item
+interactable = noone;
 </string>
           </argument>
         </arguments>
@@ -80,7 +83,56 @@ camera.target = self;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Unset interactable if it doesn't exist.
+
+if (instance_exists(interactable) || interactable == undefined) interactable = noone;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Can Play?
+
+if (!o_main.can_play) exit;
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -166,6 +218,49 @@ if (aim_x &gt; x) {
 } else {
     facing = Facing.Left
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Interactable Items
+
+var nearest = instance_nearest(aim_x, aim_y, o_interactable);
+var interactable_exists = instance_exists(interactable) &amp;&amp; interactable != undefined &amp;&amp; interactable != noone;
+
+if (nearest != noone &amp;&amp; nearest != undefined) {
+    var distance = point_distance(aim_x, aim_y, nearest.x, nearest.y);
+    if (distance &lt; 10) {
+        if (interactable_exists) interactable.active = false;
+        interactable = nearest;
+        interactable.active = true;
+    } else {
+        nearest.active = false;
+    }
+}
+
+// Run a second time in case we have updated the interactable item
+interactable_exists = instance_exists(interactable) &amp;&amp; interactable != undefined &amp;&amp; interactable != noone;
+
+if (interactable_exists &amp;&amp; interactable.active == true &amp;&amp; f_key_down(Controls.Action)) {
+    with (interactable) event_user(0);
+}
+
 </string>
           </argument>
         </arguments>
