@@ -29,10 +29,15 @@
       <script>scripts\f_inventory_slot_free.gml</script>
       <script>scripts\f_inventory_index_row.gml</script>
       <script>scripts\f_inventory_index_col.gml</script>
+      <script>scripts\f_inventory_index_colrow.gml</script>
     </scripts>
     <scripts name="Camera">
       <script>scripts\f_camera_text.gml</script>
       <script>scripts\f_camera_shake.gml</script>
+    </scripts>
+    <scripts name="Global">
+      <script>scripts\f_pause_disable.gml</script>
+      <script>scripts\f_pause_enable.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

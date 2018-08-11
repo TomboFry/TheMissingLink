@@ -171,7 +171,7 @@ ds_map_add(keys[1], gp_select,     "Back");
 ds_map_add(keys[1], gp_start,      "Start");
 
 // Use Gamepads? (Boolean)
-gp_using = true;
+gp_using = false;
 
 // Gamepad currently in use (Integer)
 gp_in_use = 0;
@@ -230,7 +230,7 @@ ctrl[Controls.WeaponFire, 0] = "Fire Weapon";
 ctrl[Controls.WeaponFire, 1] = mb_left;
 ctrl[Controls.WeaponFire, 2] = gp_shoulderrb;
 
-ctrl[Controls.Pause, 0] = "Pause";
+ctrl[Controls.Pause, 0] = "Pause / Back";
 ctrl[Controls.Pause, 1] = vk_escape;
 ctrl[Controls.Pause, 2] = gp_start;
 
@@ -239,11 +239,11 @@ ctrl[Controls.Fullscreen, 1] = vk_f11;
 ctrl[Controls.Fullscreen, 2] = gp_stickl;
 
 ctrl[Controls.Inventory, 0] = "Inventory";
-ctrl[Controls.Inventory, 1] = ord('Q');
+ctrl[Controls.Inventory, 1] = vk_tab;
 ctrl[Controls.Inventory, 2] = gp_select;
 
 ctrl[Controls.InventorySwap, 0] = "Switch";
-ctrl[Controls.InventorySwap, 1] = vk_tab;
+ctrl[Controls.InventorySwap, 1] = ord('Q');
 ctrl[Controls.InventorySwap, 2] = gp_shoulderl;
 
 ctrl[Controls.AxisHorz, 0] = "Horizontal Axis";
@@ -333,6 +333,11 @@ time_scale = 1;
 // Whether the majority of the game can continue running
 // (useful for pause menu and dialogue screens)
 can_play = true;
+
+// If there are certain cases where pausing is the wrong
+// thing to do, you can disable the use of the Pause
+// button specifically for pausing here:
+can_pause = true;
 </string>
           </argument>
         </arguments>
@@ -361,6 +366,63 @@ screen_width = round((screen_height * aspect_ratio) / 64) * 64;
 
 // window_set_size(screen_width * 2, screen_height * 2);
 // window_center();
+
+enum MenuTransition {
+    Enter,
+    Main,
+    Exit
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Pause Menu
+
+if (f_key_down(Controls.Pause) &amp;&amp; can_play &amp;&amp; can_pause) {
+    instance_create(x, y, o_menu_pause);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Reset certain variables
+
+can_pause = true;
+
 </string>
           </argument>
         </arguments>
@@ -386,6 +448,7 @@ screen_width = round((screen_height * aspect_ratio) / 64) * 64;
             <string>/// Reset certain variables
 
 can_play = true;
+
 </string>
           </argument>
         </arguments>
@@ -458,32 +521,11 @@ if (f_key_down(Controls.Fullscreen)) window_set_fullscreen(!window_get_fullscree
             <kind>1</kind>
             <string>/// Menu Management
 
-if (instance_exists(o_menu_parent)) can_play = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Pause Menu
-
-if (f_key_down(Controls.Pause) &amp;&amp; can_play) {
-    instance_create(x, y, o_menu_pause);
+if (instance_exists(o_menu_parent)) {
+    can_play = false;
+    can_pause = false;
 }
+
 </string>
           </argument>
         </arguments>

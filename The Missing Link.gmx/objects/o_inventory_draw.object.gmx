@@ -41,8 +41,17 @@ selected_col = 0;
 
 // Positional variables
 offset_x = 16;
-offset_y = 16;
+offset_y = 24;
 item_spacing = 4;
+
+// Swap Items
+is_swapping = false;
+swap_col = -1;
+swap_row = -1;
+
+// Polish
+// Selected inv item has flashing border
+border_width = 1;
 </string>
           </argument>
         </arguments>
@@ -99,15 +108,55 @@ var inv = target.inventory;
 var _vert = f_key_down(Controls.Down) - f_key_down(Controls.Up);
 var _horz = f_key_down(Controls.Right) - f_key_down(Controls.Left);
 var _inv = f_key_down(Controls.Inventory);
+var _swap = f_key_down(Controls.Confirm);
+var _drop = f_key_down(Controls.Action);
+var _cancel = f_key_down(Controls.Pause);
 
-if (_inv) {
-    instance_destroy();
-    exit;
+var selected_item = inv.inventory[# selected_col, selected_row];
+
+var min_row = 0;
+
+if (is_swapping) {
+    f_pause_disable();
+
+    var swap_item = inv.inventory[# swap_col, swap_row];
+    min_row = swap_item.type != InventoryItemType.Weapon;
+    
+    // Cancel the swap
+    if (_cancel) {
+        selected_col = swap_col;
+        selected_row = swap_row;
+
+        is_swapping = false;
+        swap_col = -1;
+        swap_row = -1;
+    }
+    
+    if (_swap &amp;&amp; !(swap_row == 0 &amp;&amp; selected_item.type == InventoryItemType.Weapon)) {
+        var temp_item = swap_item;
+        
+        inv.inventory[# swap_col, swap_row] = selected_item;
+        inv.inventory[# selected_col, selected_row] = temp_item;
+
+        is_swapping = false;
+        swap_col = -1;
+        swap_row = -1;
+    }
+} else {
+    if (_inv) instance_destroy();
+
+    // Start the swap if we're actually swapping an item
+    if (_swap &amp;&amp; selected_item != noone) {
+        swap_col = selected_col;
+        swap_row = selected_row;
+        is_swapping = true;
+    }
 }
 
-selected_row = clamp(selected_row + _vert, 0, inv.rows - 1);
+selected_row = clamp(selected_row + _vert, min_row, inv.rows - 1);
 selected_col = clamp(selected_col + _horz, 0, inv.cols - 1);
 
+border_width = (sin(degtorad(get_timer() / 2000)) + 1.5) / 2;
 
 </string>
           </argument>
@@ -155,10 +204,15 @@ for (var j = 0; j &lt; inv.rows; j++) {
         var right = draw_x + (grid_size * (i + 1)) + (item_spacing * i);
         var top = draw_y + (grid_size * j) + (item_spacing * j) + separator;
         var bottom = draw_y + (grid_size * (j + 1)) + (item_spacing * j) + separator;
-        var selected = selected_col == i &amp;&amp; selected_row == j;
-        var width = selected;
+        var selected = (selected_col == i &amp;&amp; selected_row == j) || (swap_col == i &amp;&amp; swap_row == j);
+        var width = selected * border_width;
 
-        draw_set_colour(c_white);
+        if (is_swapping &amp;&amp; swap_col == i &amp;&amp; swap_row == j) {
+            draw_set_colour(c_orange);
+        } else {
+            draw_set_colour(c_white);
+        }
+        
         draw_line_width(left - width, top - width, right + width, top - width, width + 1);
         draw_line_width(left - width, top - width, left - width, bottom + width, width + 1);
         draw_line_width(left - width, bottom + width, right + width, bottom + width, width + 1);
@@ -177,11 +231,17 @@ for (var j = 0; j &lt; inv.rows; j++) {
 
 var desc_x = draw_x + ((grid_size + item_spacing) * inv.cols) + 4;
 
+draw_set_colour(c_white);
+draw_set_valign(fa_top);
+
+// Draw remaining space
+var space_str = string(f_inventory_size_used(inv)) + ' / ' + string(f_inventory_size_total(inv));
+draw_set_halign(fa_right);
+draw_text(desc_x - 4, draw_y - 12, space_str);
+draw_set_halign(fa_left);
+
 var selected_item = inv.inventory[# selected_col, selected_row];
 if (selected_item != noone) {
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_top);
-    draw_set_colour(c_white);
     draw_set_font(fnt_large);
     draw_text(desc_x, draw_y, selected_item.name);
     draw_set_font(fnt_main);
