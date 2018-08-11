@@ -40,6 +40,8 @@ if (!variable_instance_exists(self, 'type')) type = InventoryItemType.Misc;
 
 in_inventory = false;
 
+in_inventory_prev = false;
+
 event_inherited();
 
 </string>
@@ -64,7 +66,15 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (in_inventory) exit;
+            <string>if (in_inventory_prev != in_inventory) {
+    direction = random(360);
+    speed = 2 + random(2);
+    friction = 0.2;
+}
+
+in_inventory_prev = in_inventory;
+
+if (in_inventory) exit;
 </string>
           </argument>
         </arguments>

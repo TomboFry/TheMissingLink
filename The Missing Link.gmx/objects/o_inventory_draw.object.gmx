@@ -144,6 +144,17 @@ if (is_swapping) {
     }
 } else {
     if (_inv) instance_destroy();
+    
+    if (_drop &amp;&amp; selected_item != noone) {
+        selected_item.x = target.x;
+        selected_item.y = target.y;
+
+        selected_item.persistent = false;
+
+        selected_item.in_inventory = false;
+        selected_item.interactable = true;
+        inv.inventory[# selected_col, selected_row] = noone;
+    }
 
     // Start the swap if we're actually swapping an item
     if (_swap &amp;&amp; selected_item != noone) {
