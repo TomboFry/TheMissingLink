@@ -132,7 +132,7 @@ if (is_swapping) {
         swap_row = -1;
     }
     
-    if (_swap &amp;&amp; !(swap_row == 0 &amp;&amp; selected_item.type == InventoryItemType.Weapon)) {
+    if (_swap &amp;&amp; !(swap_row == 0 &amp;&amp; selected_item != noone &amp;&amp; selected_item.type != InventoryItemType.Weapon)) {
         var temp_item = swap_item;
         
         inv.inventory[# swap_col, swap_row] = selected_item;

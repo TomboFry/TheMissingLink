@@ -75,6 +75,7 @@ event_inherited();
 in_inventory_prev = in_inventory;
 
 if (in_inventory) exit;
+
 </string>
           </argument>
         </arguments>
