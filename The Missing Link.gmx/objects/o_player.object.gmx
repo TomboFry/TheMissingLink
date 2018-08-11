@@ -54,6 +54,7 @@ spd_y = 0;
 
 // Interactable Item
 interactable = noone;
+interactable_threshold = 20;
 </string>
           </argument>
         </arguments>
@@ -245,10 +246,11 @@ var interactable_exists = instance_exists(interactable) &amp;&amp; interactable 
 
 if (nearest != noone &amp;&amp; nearest != undefined) {
     var distance = point_distance(aim_x, aim_y, nearest.x, nearest.y);
-    if (distance &lt; 10) {
-        if (interactable_exists) interactable.active = false;
+    if (distance &lt; interactable_threshold) {
+        with (o_interactable) active = false;
         interactable = nearest;
         interactable.active = true;
+        f_camera_text(camera, '[' + f_key_str(Controls.Action) + '] Interact');
     } else {
         nearest.active = false;
     }

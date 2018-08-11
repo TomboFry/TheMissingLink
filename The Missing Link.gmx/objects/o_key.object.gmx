@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Interactable Action
 
-show_message_async('Wow, you picked up a key!');
+instance_create(x, y, o_menu_parent);
 instance_destroy();
 </string>
           </argument>

@@ -17,9 +17,15 @@
       <script>scripts\f_key.gml</script>
       <script>scripts\f_key_down.gml</script>
       <script>scripts\f_key_axis.gml</script>
+      <script>scripts\f_key_str.gml</script>
     </scripts>
     <script>scripts\f_time_scale.gml</script>
+    <script>scripts\f_camera_text.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_main</font>
+    <font>fonts\fnt_large</font>
+  </fonts>
   <objects name="objects">
     <objects name="Controllers">
       <object>objects\o_main</object>
@@ -38,6 +44,10 @@
         <object>objects\o_interactable</object>
         <object>objects\o_key</object>
       </objects>
+    </objects>
+    <objects name="Menus">
+      <object>objects\o_menu_parent</object>
+      <object>objects\o_menu_pause</object>
     </objects>
   </objects>
   <rooms name="rooms">
