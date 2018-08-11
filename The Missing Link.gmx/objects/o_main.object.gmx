@@ -202,23 +202,23 @@ enum Controls {
  */
 
 ctrl[Controls.Up, 0] = "Up";
-ctrl[Controls.Up, 1] = vk_up;
+ctrl[Controls.Up, 1] = ord('W');
 ctrl[Controls.Up, 2] = gp_padu;
 
 ctrl[Controls.Down, 0] = "Down";
-ctrl[Controls.Down, 1] = vk_down;
+ctrl[Controls.Down, 1] = ord('S');
 ctrl[Controls.Down, 2] = gp_padd;
 
 ctrl[Controls.Left, 0] = "Left";
-ctrl[Controls.Left, 1] = vk_left;
+ctrl[Controls.Left, 1] = ord('A');
 ctrl[Controls.Left, 2] = gp_padl;
 
 ctrl[Controls.Right, 0] = "Right";
-ctrl[Controls.Right, 1] = vk_right;
+ctrl[Controls.Right, 1] = ord('D');
 ctrl[Controls.Right, 2] = gp_padr;
 
 ctrl[Controls.Action, 0] = "Action";
-ctrl[Controls.Action, 1] = ord('e');
+ctrl[Controls.Action, 1] = ord('E');
 ctrl[Controls.Action, 2] = gp_face3;
 
 ctrl[Controls.Confirm, 0] = "Confirm";
@@ -238,7 +238,7 @@ ctrl[Controls.Fullscreen, 1] = vk_f11;
 ctrl[Controls.Fullscreen, 2] = gp_stickl;
 
 ctrl[Controls.Inventory, 0] = "Inventory";
-ctrl[Controls.Inventory, 1] = ord('q');
+ctrl[Controls.Inventory, 1] = ord('Q');
 ctrl[Controls.Inventory, 2] = gp_select;
 
 ctrl[Controls.AxisHorz, 0] = "Horizontal Axis";
@@ -271,6 +271,33 @@ ctrl[Controls.AxisVert, 2] = gp_axisrv;
             <kind>1</kind>
             <string>/// Audio Groups
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Player Enum
+
+enum PlayerFacing {
+     Left,
+     Right
+}
 
 </string>
           </argument>

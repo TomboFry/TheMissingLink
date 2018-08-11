@@ -1,4 +1,4 @@
-/// f_control_axis(control);
+/// f_key_axis(control);
 
 var key = argument0;
 if(key == undefined || key == "") return 0;
