@@ -17,11 +17,11 @@
     <scripts name="Controls">
       <script>scripts\f_key.gml</script>
       <script>scripts\f_key_down.gml</script>
+      <script>scripts\f_key_up.gml</script>
       <script>scripts\f_key_axis.gml</script>
       <script>scripts\f_key_str.gml</script>
     </scripts>
     <script>scripts\f_time_scale.gml</script>
-    <script>scripts\f_camera_text.gml</script>
     <scripts name="Inventory">
       <script>scripts\f_inventory_size_total.gml</script>
       <script>scripts\f_inventory_size_used.gml</script>
@@ -29,6 +29,10 @@
       <script>scripts\f_inventory_slot_free.gml</script>
       <script>scripts\f_inventory_index_row.gml</script>
       <script>scripts\f_inventory_index_col.gml</script>
+    </scripts>
+    <scripts name="Camera">
+      <script>scripts\f_camera_text.gml</script>
+      <script>scripts\f_camera_shake.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -54,6 +58,11 @@
       </objects>
       <objects name="Weapon">
         <object>objects\o_weapon</object>
+        <object>objects\o_weapon_pistol</object>
+        <object>objects\o_weapon_machinegun</object>
+        <objects name="Bullets">
+          <object>objects\o_bullet_pistol</object>
+        </objects>
       </objects>
       <objects name="Inventory">
         <object>objects\o_inventory</object>
@@ -61,6 +70,9 @@
         <object>objects\o_inventory_draw</object>
       </objects>
       <object>objects\o_poi</object>
+      <objects name="Enemies">
+        <object>objects\o_enemy</object>
+      </objects>
     </objects>
     <objects name="Menus">
       <object>objects\o_menu_parent</object>

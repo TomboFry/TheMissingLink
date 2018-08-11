@@ -208,6 +208,12 @@ target_y = lerp(target_y, y - (view_hview[view] / 2), 0.1 * f_time_scale());
 
 var real_shake = power(shake, 2);
 
+if (shake &gt; 0) {
+    shake -= 0.075;
+} else if (shake &lt; 0) {
+    shake = 0;
+}
+
 view_xview[view] = target_x + random_range(-real_shake, real_shake);
 view_yview[view] = target_y + random_range(-real_shake, real_shake);
 </string>
@@ -340,6 +346,30 @@ for (var i = 0; i &lt; inv.cols; i++) {
         );
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Crosshair
+
+draw_set_colour(c_red);
+draw_line_width(target.x, target.y, target.aim_x, target.aim_y, 2);
 </string>
           </argument>
         </arguments>

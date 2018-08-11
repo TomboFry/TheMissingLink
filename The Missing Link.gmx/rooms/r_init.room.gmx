@@ -87,7 +87,8 @@
     <instance objName="o_key" x="176" y="208" name="inst_E7155119" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_key" x="192" y="160" name="inst_E8452085" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_key" x="208" y="192" name="inst_314F21C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_weapon" x="256" y="128" name="inst_CC60F062" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_weapon_pistol" x="256" y="128" name="inst_80EB8ACE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_weapon_machinegun" x="176" y="112" name="inst_9FADF80D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -61,6 +61,12 @@ can_play = true;
 
 // Selected inventory item
 inventory_slot_selected = 0;
+
+// Remapped version of inventory[selected_slot] for ease of use
+current_weapon = noone;
+
+// How many steps the fire button has been held down
+fire_held = 0;
 </string>
           </argument>
         </arguments>
@@ -209,8 +215,6 @@ spd_y = lerp(spd_y, move_dir_y * walk_speed * f_time_scale(), 0.3 * f_time_scale
 if (!place_free(x + (move_dir_x * ceil(spd_x + 0.1)), y)) spd_x = 0;
 if (!place_free(x, y + (move_dir_y * ceil(spd_y + 0.1)))) spd_y = 0;
 
-dir = point_direction(x, y, x + spd_x, y + spd_y);
-
 x += spd_x;
 y += spd_y;
 
@@ -252,6 +256,8 @@ if(o_main.gp_using){
     aim_x = mouse_x;
     aim_y = mouse_y;
 }
+
+dir = point_direction(x, y, aim_x, aim_y);
 
 if (aim_x &gt; x) {
     facing = Facing.Right
@@ -343,6 +349,51 @@ if (f_key_down(Controls.InventorySwap)) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fire Weapon
+
+// Update current weapon
+current_weapon = inventory.inventory[# inventory_slot_selected, 0];
+
+if (f_key(Controls.WeaponFire)) {
+    if (current_weapon != noone &amp;&amp; current_weapon.fire_object != noone &amp;&amp; current_weapon.wait_count == 0) {
+        if (current_weapon.ammo &gt; 0) {
+            if ((current_weapon.fire_rate == 0 &amp;&amp; fire_held == 0) || (current_weapon.fire_rate &gt; 0 &amp;&amp; fire_held mod current_weapon.fire_rate == 0)) {
+                var fire = instance_create(x, y, current_weapon.fire_object);
+                fire.parent = self;
+                with (fire) event_user(0);
+        
+                current_weapon.ammo--;
+                current_weapon.wait_count = current_weapon.fire_wait;
+            }
+        } else {
+            // Play empty clip sound
+        }
+    }
+    fire_held++;
+}
+
+if (f_key_up(Controls.WeaponFire)) fire_held = 0;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="o_wall_parent">
       <action>
@@ -385,10 +436,41 @@ spd_y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>/// Draw player
 
-draw_set_colour(c_red);
-draw_line_width(x, y, aim_x, aim_y, 2);
+draw_self();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Weapon
+
+var current_weapon = inventory.inventory[# inventory_slot_selected, 0];
+
+// Draw weapon here
+if (current_weapon != noone) {
+    var yscale = 1;
+    if (dir &gt; 90 &amp;&amp; dir &lt; 270) yscale = -1;
+    draw_sprite_ext(current_weapon.sprite_index, current_weapon.image_index, x, y, 1, yscale, dir, c_white, 1);
+}
+
 </string>
           </argument>
         </arguments>
