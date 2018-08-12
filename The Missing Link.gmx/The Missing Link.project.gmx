@@ -41,6 +41,7 @@
       <script>scripts\f_camera_text.gml</script>
       <script>scripts\f_camera_shake.gml</script>
       <script>scripts\f_fullscreen.gml</script>
+      <script>scripts\f_draw_tooltip.gml</script>
     </scripts>
     <scripts name="Global">
       <script>scripts\f_pause_disable.gml</script>

@@ -38,7 +38,7 @@ ds_map_add(items[2], MenuItem.Text, 'Exit to Desktop');
 ds_map_add(items[2], MenuItem.Type, MenuItemType.Action);
 ds_map_add(items[2], MenuItem.Enabled, true);
 
-offset_y = 128;
+offset_y = 96;
 
 title_sin = 0;
 

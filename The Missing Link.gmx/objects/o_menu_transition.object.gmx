@@ -98,7 +98,41 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>/// Draw tooltip
+
+var str = '[' + f_key_str(Controls.Up) + '/' + f_key_str(Controls.Down) + '] Up/Down';
+var item = items[selection];
+if (item[? MenuItem.Type] == MenuItemType.Action) {
+    if (item[? MenuItem.Enabled] == true) {
+        str += '#[' + f_key_str(Controls.Confirm) + '] Select';
+    }
+} else {
+    str += '#[' + f_key_str(Controls.Left) + '/' + f_key_str(Controls.Right) + '] Change';
+}
+
+f_draw_tooltip(0, str);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font(fnt_large);
+event_inherited();
 
 draw_set_alpha(alpha);
 draw_set_colour(c_black);

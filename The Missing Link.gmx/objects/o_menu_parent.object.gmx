@@ -186,7 +186,6 @@ var view_y = view_yview[menu_view] + offset_y;
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
-draw_set_font(fnt_main);
 
 for (var i = select_min; i &lt;= select_max; i++) {
     draw_set_colour(c_white);

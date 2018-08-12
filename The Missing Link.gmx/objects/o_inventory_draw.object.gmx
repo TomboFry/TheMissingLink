@@ -254,6 +254,45 @@ if (selected_item != noone) {
     draw_set_font(fnt_main);
     draw_text_ext(desc_x, draw_y + 12, selected_item.description, string_height('d'), 128);
 }
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Tooltip
+
+var view = target.camera.view;
+var str = '[' + f_key_str(Controls.Up) + '/' + f_key_str(Controls.Down) + '/' +
+          f_key_str(Controls.Left) + '/' + f_key_str(Controls.Right) + '] Move Cursor';
+
+var selected_item = inv.inventory[# selected_col, selected_row];
+
+if (is_swapping) {
+    str += '#[' + f_key_str(Controls.Confirm) + '] Confirm Swap#[' + f_key_str(Controls.Pause) + '] Cancel Swap';
+} else {
+    if (selected_item != noone) {
+        str += '#[' + f_key_str(Controls.Action) + '] Drop Item#[' + f_key_str(Controls.Confirm) + '] Swap Item';
+    }
+    str += '#[' + f_key_str(Controls.Inventory) + '] Close Inventory';
+}
+
+f_draw_tooltip(view, str);
 </string>
           </argument>
         </arguments>

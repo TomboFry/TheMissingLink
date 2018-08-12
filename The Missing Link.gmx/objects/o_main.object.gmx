@@ -741,6 +741,8 @@ for (var i = 0; i &lt; 2; i++) {
     view_wport[i] = screen_width * 2;
     view_hport[i] = screen_height * 2;
 }
+
+scale_mod = 0;
 </string>
           </argument>
         </arguments>
