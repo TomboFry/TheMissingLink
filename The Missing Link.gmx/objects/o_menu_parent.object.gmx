@@ -121,7 +121,7 @@ if (_action == true &amp;&amp; _item[? MenuItem.Enabled] &amp;&amp; _item[? Menu
     event_user(selection);
 }
 
-if (_horz != 0 &amp;&amp; _item[? MenuItem.Type] == MenuItemType.Variable) {
+if (_horz != 0 &amp;&amp; _item[? MenuItem.Enabled] &amp;&amp; _item[? MenuItem.Type] == MenuItemType.Variable) {
     event_user(selection);
 }
 </string>
@@ -191,6 +191,8 @@ for (var i = select_min; i &lt;= select_max; i++) {
     draw_set_colour(c_white);
 
     var item = items[i];
+    var enabled = item[? MenuItem.Enabled];
+    if (enabled == false) draw_set_alpha(draw_get_alpha() * 0.5);
     var text = item[? MenuItem.Text];
     var item_width = string_width(text);
 
@@ -207,8 +209,10 @@ for (var i = select_min; i &lt;= select_max; i++) {
         );
         draw_set_colour(c_black);
     }
-
+    
     draw_text(view_x, view_y + (i * item_height), text);
+    
+    if (enabled == false) draw_set_alpha(draw_get_alpha() * 2);
 }
 </string>
           </argument>

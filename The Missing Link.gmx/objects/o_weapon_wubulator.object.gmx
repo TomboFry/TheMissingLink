@@ -25,12 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = 'Pistol';
-description = 'Basic weapon, not really good for much else.'
+            <string>name = 'Wubulator';
+description = 'Wub wub wub wub wub wub wub'
 
+ammo_max = 200;
+fire_rate = 6;
+fire_wait = 0;
 fire_object = o_bullet_pistol;
 
-image_index = 0;
+image_index = 2;
 image_speed = 0;
 
 event_inherited();

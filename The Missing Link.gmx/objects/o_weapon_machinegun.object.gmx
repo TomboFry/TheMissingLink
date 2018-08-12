@@ -33,6 +33,9 @@ fire_rate = 6;
 fire_wait = 0;
 fire_object = o_bullet_pistol;
 
+image_index = 1;
+image_speed = 0;
+
 event_inherited();
 </string>
           </argument>

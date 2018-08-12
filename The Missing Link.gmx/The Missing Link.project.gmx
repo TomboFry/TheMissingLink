@@ -7,16 +7,21 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\s_wall</sprite>
-    <sprite>sprites\s_player</sprite>
     <sprite>sprites\s_key</sprite>
     <sprite>sprites\s_weapon</sprite>
     <sprite>sprites\s_enemy</sprite>
     <sprites name="GUI">
       <sprite>sprites\s_title</sprite>
     </sprites>
+    <sprites name="Game">
+      <sprite>sprites\s_player_idle</sprite>
+      <sprite>sprites\s_player_walk</sprite>
+      <sprite>sprites\s_poi</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_menu</background>
+    <background>background\bg_tileset_overworld</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -77,6 +82,7 @@
         <object>objects\o_weapon</object>
         <object>objects\o_weapon_pistol</object>
         <object>objects\o_weapon_machinegun</object>
+        <object>objects\o_weapon_wubulator</object>
         <objects name="Bullets">
           <object>objects\o_bullet_pistol</object>
         </objects>
@@ -108,7 +114,7 @@
     <room>rooms\r_init</room>
     <room>rooms\r_menu_main</room>
     <room>rooms\r_menu_options</room>
-    <room>rooms\r_test</room>
+    <room>rooms\r_overworld</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -41,13 +41,46 @@ ds_map_add(items[2], MenuItem.Type, MenuItemType.Variable);
 ds_map_add(items[2], MenuItem.Enabled, true);
 
 items[3] = ds_map_create();
-ds_map_add(items[3], MenuItem.Text, '&lt; Back');
-ds_map_add(items[3], MenuItem.Type, MenuItemType.Action);
-ds_map_add(items[3], MenuItem.Enabled, true);
+ds_map_add(items[3], MenuItem.Text, 'Scale: x' + string(o_main.scale));
+ds_map_add(items[3], MenuItem.Type, MenuItemType.Variable);
+ds_map_add(items[3], MenuItem.Enabled, !window_get_fullscreen());
+
+items[4] = ds_map_create();
+ds_map_add(items[4], MenuItem.Text, '&lt; Back');
+ds_map_add(items[4], MenuItem.Type, MenuItemType.Action);
+ds_map_add(items[4], MenuItem.Enabled, true);
 
 offset_y = 64;
 
 event_inherited();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="14">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (state == MenuTransition.Exit) {
+    room_goto(r_menu_main);
+} else {
+    state = MenuTransition.Exit;
+}
 
 </string>
           </argument>
@@ -71,11 +104,14 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (state == MenuTransition.Exit) {
-    room_goto(r_menu_main);
-} else {
-    state = MenuTransition.Exit;
-}
+            <string>/// Scaling
+
+var _horz = f_key_down(Controls.Right) - f_key_down(Controls.Left);
+
+o_main.scale = clamp(o_main.scale + _horz, 1, 5);
+f_fullscreen(false);
+
+ds_map_replace(items[3], MenuItem.Text, 'Scale: x' + string(o_main.scale));
 
 </string>
           </argument>
@@ -159,9 +195,12 @@ ds_map_replace(items[1], MenuItem.Text, 'Music: ' + f_float_percent(o_main.music
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var fs = !window_get_fullscreen();
-
+            <string>/// Toggle Fullscreen
+var fs = !window_get_fullscreen();
 f_fullscreen(fs);
+
+ds_map_replace(items[3], MenuItem.Enabled, !fs);
+
 ds_map_replace(items[0], MenuItem.Text, 'Fullscreen: ' + f_bool_string(fs));
 </string>
           </argument>

@@ -149,7 +149,7 @@ title_sin = sin(get_timer() / 960000) * 4;
           <argument>
             <kind>1</kind>
             <string>if (state == MenuTransition.Exit) {
-    room_goto(r_test);
+    room_goto(r_overworld);
 } else {
     state = MenuTransition.Exit;
 }

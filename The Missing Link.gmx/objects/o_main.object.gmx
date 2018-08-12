@@ -441,7 +441,7 @@ dialogue = ds_queue_create();
 screen_height = 192;
 aspect_ratio = clamp(display_get_width() / display_get_height(), 1.25, 2.4);
 screen_width = round((screen_height * aspect_ratio) / 64) * 64;
-scale = 2;
+scale = 5;
 scale_mod = 0;
 
 application_surface_draw_enable(false);
@@ -519,7 +519,7 @@ room_goto(r_menu_main);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>window_set_size(screen_width * 2, screen_height * 2);
+            <string>window_set_size(screen_width * scale, screen_height * scale);
 window_center();
 </string>
           </argument>
@@ -765,10 +765,14 @@ scale_mod = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var xx = (window_get_width() * 0.5) - (surface_get_width(application_surface) * (scale + scale_mod) * 0.5);
-var yy = (window_get_height() * 0.5) - (surface_get_height(application_surface) * (scale + scale_mod) * 0.5);
+            <string>var temp_scale = scale;
 
-draw_surface_ext(application_surface, xx, yy, scale + scale_mod, scale + scale_mod, 0, c_white, 1);
+if (window_get_fullscreen()) temp_scale = display_get_height() / o_main.screen_height;
+
+var xx = (window_get_width() * 0.5) - (surface_get_width(application_surface) * (temp_scale + scale_mod) * 0.5);
+var yy = (window_get_height() * 0.5) - (surface_get_height(application_surface) * (temp_scale + scale_mod) * 0.5);
+
+draw_surface_ext(application_surface, xx, yy, temp_scale + scale_mod, temp_scale + scale_mod, 0, c_white, 1);
 
 </string>
           </argument>
