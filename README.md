@@ -1,4 +1,4 @@
-# The Missing Link
+![The Missing Link](./Assets/Branding/Logo.png)
 
 My entry for [Ludum Dare 42](https://ldjam.com))
 
