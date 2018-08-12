@@ -122,6 +122,7 @@ title_sin = sin(get_timer() / 960000) * 4;
             <kind>1</kind>
             <string>if (state == MenuTransition.Exit) {
     room_goto(r_menu_options);
+    state = MenuTransition.Enter;
 } else {
     state = MenuTransition.Exit;
 }
@@ -149,7 +150,9 @@ title_sin = sin(get_timer() / 960000) * 4;
           <argument>
             <kind>1</kind>
             <string>if (state == MenuTransition.Exit) {
-    room_goto(r_overworld);
+    var player = instance_create(0, 0, o_player);
+    room_goto(r_powercore);
+    state = MenuTransition.Enter;
 } else {
     state = MenuTransition.Exit;
 }

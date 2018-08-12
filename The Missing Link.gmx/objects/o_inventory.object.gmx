@@ -63,7 +63,17 @@ target = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_grid_destroy(inventory);
+            <string>// Delete all inventory items
+
+for (var j = 0; j &lt; rows; j++) {
+    for (var i = 0; i &lt; cols; i++) {
+        if (instance_exists(inventory[# i, j])) {
+            with (inventory[# i, j]) instance_destroy();
+        }
+    }
+}
+
+ds_grid_destroy(inventory);
 </string>
           </argument>
         </arguments>

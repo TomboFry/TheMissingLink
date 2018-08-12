@@ -358,6 +358,13 @@ enum MenuTransition {
     Exit
 }
 
+enum Level {
+    Name,
+    Unlocked,
+    Completed,
+    Room
+}
+
 </string>
           </argument>
         </arguments>
@@ -474,6 +481,60 @@ alarm[0] = 5;
 music = 1;
 sfx = 1;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Story / Mission
+
+level[0, Level.Name] = '1 - Introduction';
+level[0, Level.Unlocked] = true;
+level[0, Level.Completed] = false;
+level[0, Level.Room] = r_level_1;
+
+level[1, Level.Name] = '2 - I dunno?';
+level[1, Level.Unlocked] = false;
+level[1, Level.Completed] = false;
+level[1, Level.Room] = r_overworld;
+
+level[2, Level.Name] = '3 - I dunno?';
+level[2, Level.Unlocked] = false;
+level[2, Level.Completed] = false;
+level[2, Level.Room] = r_overworld;
+
+level[3, Level.Name] = '4 - I dunno?';
+level[3, Level.Unlocked] = false;
+level[3, Level.Completed] = false;
+level[3, Level.Room] = r_overworld;
+
+level[4, Level.Name] = '5 - I dunno?';
+level[4, Level.Unlocked] = false;
+level[4, Level.Completed] = false;
+level[4, Level.Room] = r_overworld;
+
+level_count = 5;
+
+intro_dialogue_done = false;
+
+// Updated each level.
+has_core = false;
+current_level = -1;
 </string>
           </argument>
         </arguments>
@@ -676,6 +737,15 @@ if (instance_exists(o_menu_parent) || instance_exists(o_dialogue)) {
     can_pause = false;
 }
 
+if (instance_exists(o_player)) {
+    if (!f_room_gameplay()) {
+        o_player.can_play = false;
+        o_player.visible = false;
+    } else {
+        o_player.visible = true;
+    }
+}
+
 </string>
           </argument>
         </arguments>
@@ -743,6 +813,33 @@ for (var i = 0; i &lt; 2; i++) {
 }
 
 scale_mod = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Objective Controller
+
+if (f_room_gameplay()) {
+    has_core = false;
+} else {
+    current_level = -1;
+}
 </string>
           </argument>
         </arguments>

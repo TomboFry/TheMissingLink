@@ -7,21 +7,43 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\s_wall</sprite>
-    <sprite>sprites\s_key</sprite>
     <sprite>sprites\s_weapon</sprite>
-    <sprite>sprites\s_enemy</sprite>
     <sprites name="GUI">
       <sprite>sprites\s_title</sprite>
     </sprites>
     <sprites name="Game">
-      <sprite>sprites\s_player_idle</sprite>
-      <sprite>sprites\s_player_walk</sprite>
       <sprite>sprites\s_poi</sprite>
+      <sprite>sprites\s_player_start</sprite>
+      <sprites name="Interactables">
+        <sprite>sprites\s_key</sprite>
+        <sprite>sprites\s_powercore_door</sprite>
+      </sprites>
+      <sprites name="Characters">
+        <sprite>sprites\s_player_idle</sprite>
+        <sprite>sprites\s_player_walk</sprite>
+        <sprite>sprites\s_guard_idle</sprite>
+        <sprite>sprites\s_guard_talk</sprite>
+        <sprite>sprites\s_major_idle</sprite>
+        <sprite>sprites\s_major_talk</sprite>
+        <sprites name="Enemies">
+          <sprite>sprites\s_enemy</sprite>
+          <sprite>sprites\s_enemy_a</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="Objects">
+        <sprite>sprites\s_powercore_tower</sprite>
+        <sprite>sprites\s_powercore_tower_empty</sprite>
+        <sprite>sprites\s_level_door</sprite>
+        <sprite>sprites\s_locked_door</sprite>
+        <sprite>sprites\s_core</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_menu</background>
     <background>background\bg_tileset_overworld</background>
+    <background>background\bg_tileset_gradient</background>
+    <background>background\bg_tileset_level1</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -54,6 +76,10 @@
       <script>scripts\f_dialogue.gml</script>
       <script>scripts\f_bool_string.gml</script>
       <script>scripts\f_float_percent.gml</script>
+      <script>scripts\f_level_highest.gml</script>
+      <script>scripts\f_room_gameplay.gml</script>
+      <script>scripts\f_game_new.gml</script>
+      <script>scripts\f_game_reset_level.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -69,14 +95,21 @@
       <objects name="Player">
         <object>objects\o_player</object>
         <object>objects\o_camera</object>
+        <object>objects\o_player_start</object>
       </objects>
       <objects name="Solid">
         <object>objects\o_wall_parent</object>
         <object>objects\o_wall</object>
+        <object>objects\o_powercore_tower</object>
+        <object>objects\o_powercore_tower_empty</object>
+        <object>objects\o_locked_door</object>
       </objects>
       <objects name="Interactable">
         <object>objects\o_interactable</object>
         <object>objects\o_key</object>
+        <object>objects\o_powercore_door_exit</object>
+        <object>objects\o_powercore_door_entrance</object>
+        <object>objects\o_level_door</object>
       </objects>
       <objects name="Weapon">
         <object>objects\o_weapon</object>
@@ -97,9 +130,12 @@
       </objects>
       <objects name="Others">
         <object>objects\o_poi</object>
+        <object>objects\o_core_pickup</object>
       </objects>
       <objects name="NPC">
         <object>objects\o_npc</object>
+        <object>objects\o_depths_guard</object>
+        <object>objects\o_major</object>
       </objects>
     </objects>
     <objects name="Menus">
@@ -108,6 +144,8 @@
       <object>objects\o_menu_transition</object>
       <object>objects\o_menu_main</object>
       <object>objects\o_menu_options</object>
+      <object>objects\o_menu_level_select</object>
+      <object>objects\o_menu_gameover</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -115,6 +153,8 @@
     <room>rooms\r_menu_main</room>
     <room>rooms\r_menu_options</room>
     <room>rooms\r_overworld</room>
+    <room>rooms\r_powercore</room>
+    <room>rooms\r_level_1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

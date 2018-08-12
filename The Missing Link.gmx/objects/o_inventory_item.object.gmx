@@ -97,8 +97,6 @@ if (in_inventory) exit;
 var player = instance_nearest(x, y, o_player);
 var inv = player.inventory;
 
-show_debug_message(type == InventoryItemType.Weapon);
-
 var slot = f_inventory_slot_free(inv, type == InventoryItemType.Weapon);
 
 if (slot != -1) {

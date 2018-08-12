@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-100000</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -57,6 +57,10 @@ bottom_text = '';
 // Death State Polish
 dead_alpha = 0;
 
+
+// If we're in a main menu where we should run the camera,
+// hide it using this.
+suppress = false;
 </string>
           </argument>
         </arguments>
@@ -80,6 +84,8 @@ dead_alpha = 0;
           <argument>
             <kind>1</kind>
             <string>/// Update bottom text
+
+if (suppress) exit;
 
 bottom_text = '';
 
@@ -106,6 +112,8 @@ bottom_text = '';
           <argument>
             <kind>1</kind>
             <string>/// Init Camera
+
+if (suppress) exit;
 
 if (init == false &amp;&amp; target != noone) {
     view_enabled = true;
@@ -225,6 +233,34 @@ view_yview[view] = target_y + random_range(-real_shake, real_shake);
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (!f_room_gameplay()) {
+    suppress = true;
+} else {
+    suppress = false;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -242,8 +278,7 @@ view_yview[view] = target_y + random_range(-real_shake, real_shake);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Debug
-
+            <string>if (suppress) exit;
 </string>
           </argument>
         </arguments>

@@ -7,7 +7,7 @@
   <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <colour>2302493</colour>
   <showcolour>-1</showcolour>
   <code></code>
@@ -26,9 +26,9 @@
     <showViews>0</showViews>
     <deleteUnderlyingObj>-1</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>0</page>
-    <xoffset>-119</xoffset>
-    <yoffset>-123</yoffset>
+    <page>1</page>
+    <xoffset>1411</xoffset>
+    <yoffset>1018</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -51,10 +51,11 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="o_player" x="608" y="512" name="inst_FC941C2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_weapon_pistol" x="626" y="436" name="inst_5D070B36" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_poi" x="608" y="176" name="inst_80843B6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_poi" x="1098" y="289" name="inst_39DB4A5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_powercore_door_entrance" x="1008" y="288" name="inst_AFB75125" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_player_start" x="624" y="512" name="inst_65DD1FA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_tileset_overworld" x="240" y="336" w="16" h="16" xo="16" yo="16" id="10000004" name="inst_9B6AC038" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -174,7 +174,7 @@ if (!instance_exists(inventory_draw) || inventory_draw == undefined) inventory_d
 
 can_play = true;
 
-if (inventory_draw != noone) can_play = false;
+if (inventory_draw != noone || is_dead) can_play = false;
 
 if (!o_main.can_play || !can_play) exit;
 </string>
@@ -199,10 +199,11 @@ if (!o_main.can_play || !can_play) exit;
             <kind>1</kind>
             <string>/// Death Check
 
-if (hp &lt;= 0) {
-    if (!is_dead) f_camera_shake(self, 5);
+if (hp &lt;= 0 &amp;&amp; !is_dead) {
+    if (!is_dead) f_camera_shake(id, 5);
     can_play = false;
     is_dead = true;
+    instance_create(x, y, o_menu_gameover);
     exit;
 }
 
@@ -333,24 +334,23 @@ if ((facing == -1 &amp;&amp; move_dir_x &gt; 0) || (facing == 1 &amp;&amp; move_
             <string>/// Interactable Items
 
 var nearest = instance_nearest(aim_x, aim_y, o_interactable);
-var interactable_exists = instance_exists(interactable) &amp;&amp; interactable != undefined &amp;&amp; interactable != noone;
 
 if (nearest != noone &amp;&amp; nearest != undefined) {
     var distance = point_distance(aim_x, aim_y, nearest.x, nearest.y);
-    if (distance &lt; interactable_threshold &amp;&amp; nearest.interactable) {
+    var distance_from_player = distance_to_object(nearest);
+    if (distance &lt; interactable_threshold &amp;&amp; distance_from_player &lt; interactable_threshold * 3 &amp;&amp; nearest.interactable) {
         with (o_interactable) active = false;
         interactable = nearest;
         interactable.active = true;
         var str = 'Interact';
-        if (nearest.object_index == o_inventory_item.object_index) str = 'Pick up';
+        // if (nearest.object_index == o_inventory_item.object_index) str = 'Pick up';
         f_camera_text(camera, '[' + f_key_str(Controls.Action) + '] ' + str);
     } else {
         nearest.active = false;
     }
 }
 
-// Run a second time in case we have updated the interactable item
-interactable_exists = instance_exists(interactable) &amp;&amp; interactable != undefined &amp;&amp; interactable != noone;
+var interactable_exists = instance_exists(interactable) &amp;&amp; interactable != undefined &amp;&amp; interactable != noone;
 
 if (interactable_exists &amp;&amp; interactable.active == true &amp;&amp; f_key_down(Controls.Action)) {
     with (interactable) event_user(0);
@@ -465,6 +465,37 @@ if (f_key_up(Controls.WeaponFire)) fire_held = 0;
             <kind>1</kind>
             <string>spd_x = 0;
 spd_y = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (instance_exists(o_player_start)) {
+    x = o_player_start.x;
+    y = o_player_start.y;
+    camera.target_x = x - (view_wview[camera.view] / 2);
+    camera.target_y = y - (view_hview[camera.view] / 2);
+    camera.x = x - (view_wview[camera.view] / 2);
+    camera.y = y - (view_hview[camera.view] / 2);
+}
+
 </string>
           </argument>
         </arguments>

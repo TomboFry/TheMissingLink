@@ -78,6 +78,7 @@ event_inherited();
             <kind>1</kind>
             <string>if (state == MenuTransition.Exit) {
     room_goto(r_menu_main);
+    state = MenuTransition.Enter;
 } else {
     state = MenuTransition.Exit;
 }

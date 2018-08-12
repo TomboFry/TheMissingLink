@@ -78,7 +78,7 @@ switch (step) {
             if (options != undefined) {
                 var menu = instance_create(0, 0, options);
                 menu.item_height = 14;
-                menu.offset_y = view_hview[0] - (menu.item_height * 2);
+                menu.offset_y = view_hview[0] - (menu.item_height * array_length_1d(menu.items));
             }
         }
         break;
