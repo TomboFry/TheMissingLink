@@ -340,6 +340,23 @@ enum MenuAlign {
     Center
 }
 
+enum DialogueType {
+    Text,
+    Question
+}
+
+enum DialogueItem {
+    Type,
+    Text,
+    Character,
+    Options
+}
+
+enum MenuTransition {
+    Enter,
+    Main,
+    Exit
+}
 
 </string>
           </argument>
@@ -395,6 +412,30 @@ can_pause = true;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Dialogue Queue
+
+dialogue = ds_queue_create();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Screen setup
 
 screen_height = 192;
@@ -404,11 +445,6 @@ screen_width = round((screen_height * aspect_ratio) / 64) * 64;
 // window_set_size(screen_width * 2, screen_height * 2);
 // window_center();
 
-enum MenuTransition {
-    Enter,
-    Main,
-    Exit
-}
 </string>
           </argument>
         </arguments>
@@ -558,9 +594,42 @@ if (f_key_down(Controls.Fullscreen)) window_set_fullscreen(!window_get_fullscree
             <kind>1</kind>
             <string>/// Menu Management
 
-if (instance_exists(o_menu_parent)) {
+if (instance_exists(o_menu_parent) || instance_exists(o_dialogue)) {
     can_play = false;
     can_pause = false;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Dialogue Management
+
+if (!ds_queue_empty(dialogue) &amp;&amp; instance_number(o_dialogue) == 0 &amp;&amp; can_play) {
+    var dialogue_item = ds_queue_dequeue(dialogue);
+    var popup = instance_create(0, 0, o_dialogue);
+
+    popup.type = dialogue_item[? DialogueItem.Type];
+    popup.text = dialogue_item[? DialogueItem.Text];
+    popup.character = dialogue_item[? DialogueItem.Character];
+    popup.options = dialogue_item[? DialogueItem.Options];
+    with (popup) event_user(0);
 }
 
 </string>

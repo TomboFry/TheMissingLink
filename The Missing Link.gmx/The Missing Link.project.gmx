@@ -39,6 +39,7 @@
     <scripts name="Global">
       <script>scripts\f_pause_disable.gml</script>
       <script>scripts\f_pause_enable.gml</script>
+      <script>scripts\f_dialogue.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -48,6 +49,7 @@
   <objects name="objects">
     <objects name="Controllers">
       <object>objects\o_main</object>
+      <object>objects\o_dialogue</object>
     </objects>
     <objects name="Gameplay">
       <objects name="Player">
@@ -80,6 +82,9 @@
       </objects>
       <objects name="Others">
         <object>objects\o_poi</object>
+      </objects>
+      <objects name="NPC">
+        <object>objects\o_npc</object>
       </objects>
     </objects>
     <objects name="Menus">

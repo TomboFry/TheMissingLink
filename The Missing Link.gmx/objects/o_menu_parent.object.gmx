@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100000</depth>
+  <depth>-100001</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -169,7 +169,6 @@ instance_destroy();
             <kind>1</kind>
             <string>/// Menu Draw
 
-
 // offset_x,_y
 // menu_width
 // menu_align
@@ -180,6 +179,7 @@ instance_destroy();
 // Just center align by default for now.
 var view_x = view_xview[menu_view] + (view_wview[menu_view] / 2) + offset_x;
 var view_y = view_yview[menu_view] + offset_y;
+
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 draw_set_font(fnt_main);

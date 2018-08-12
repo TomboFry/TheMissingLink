@@ -230,12 +230,8 @@ for (var j = 0; j &lt; inv.rows; j++) {
         draw_line_width(right + width, top - width, right + width, bottom + width, width + 1);
 
         var item = inv.inventory[# i, j];
-        if (item == noone) {
-            draw_set_colour(c_red);
-            draw_line_width(left, top, right, bottom, 1);
-            draw_line_width(left, bottom, right, top, 1);
-        } else {
-            draw_sprite(item.sprite_index, item.image_index, left + item.sprite_xoffset, top + item.sprite_yoffset);
+        if (item != noone) {
+            draw_sprite(item.sprite_index, item.image_index, left + item.sprite_xoffset + 2, top + item.sprite_yoffset + 2);
         }
     }
 }
