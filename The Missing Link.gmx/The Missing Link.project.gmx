@@ -40,11 +40,14 @@
     <scripts name="Camera">
       <script>scripts\f_camera_text.gml</script>
       <script>scripts\f_camera_shake.gml</script>
+      <script>scripts\f_fullscreen.gml</script>
     </scripts>
     <scripts name="Global">
       <script>scripts\f_pause_disable.gml</script>
       <script>scripts\f_pause_enable.gml</script>
       <script>scripts\f_dialogue.gml</script>
+      <script>scripts\f_bool_string.gml</script>
+      <script>scripts\f_float_percent.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -95,10 +98,16 @@
     <objects name="Menus">
       <object>objects\o_menu_parent</object>
       <object>objects\o_menu_pause</object>
+      <object>objects\o_menu_transition</object>
+      <object>objects\o_menu_main</object>
+      <object>objects\o_menu_options</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_init</room>
+    <room>rooms\r_menu_main</room>
+    <room>rooms\r_menu_options</room>
+    <room>rooms\r_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

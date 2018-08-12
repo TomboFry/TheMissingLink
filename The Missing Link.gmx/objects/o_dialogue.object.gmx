@@ -126,8 +126,6 @@ switch (step) {
             <kind>1</kind>
             <string>/// Perform Dialogue Box Things
 
-show_debug_message(options);
-
 text_length = string_length(text);
 text_count = 0;
 step = MenuTransition.Enter;

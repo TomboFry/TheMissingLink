@@ -3,9 +3,9 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100002</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>o_menu_parent</parentName>
+  <parentName>o_menu_transition</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,14 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Create Menu Items
-
-items[0] = ds_map_create();
-ds_map_add(items[0], MenuItem.Text, 'Resume');
+            <string>items[0] = ds_map_create();
+ds_map_add(items[0], MenuItem.Text, 'New Game');
 ds_map_add(items[0], MenuItem.Type, MenuItemType.Action);
 ds_map_add(items[0], MenuItem.Enabled, true);
 items[1] = ds_map_create();
-ds_map_add(items[1], MenuItem.Text, 'Exit to Main Menu');
+ds_map_add(items[1], MenuItem.Text, 'Options');
 ds_map_add(items[1], MenuItem.Type, MenuItemType.Action);
 ds_map_add(items[1], MenuItem.Enabled, true);
 items[2] = ds_map_create();
@@ -40,12 +38,12 @@ ds_map_add(items[2], MenuItem.Text, 'Exit to Desktop');
 ds_map_add(items[2], MenuItem.Type, MenuItemType.Action);
 ds_map_add(items[2], MenuItem.Enabled, true);
 
-offset_y = 32;
+offset_y = 128;
+
+title_sin = 0;
 
 event_inherited();
 
-alpha = 0;
-step = MenuTransition.Enter;
 </string>
           </argument>
         </arguments>
@@ -68,16 +66,10 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (step == MenuTransition.Enter) {
-    if (alpha &lt; 1) {
-        alpha += 0.05;
-    } else {
-        alpha = 1;
-        step = MenuTransition.Main;
-    }
-} else {
-    event_inherited();
-}
+            <string>event_inherited();
+
+title_sin = sin(get_timer() / 960000) * 4;
+
 </string>
           </argument>
         </arguments>
@@ -100,7 +92,12 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>game_end();
+            <string>if (state == MenuTransition.Exit) {
+    game_end();
+} else {
+    state = MenuTransition.Exit;
+}
+
 </string>
           </argument>
         </arguments>
@@ -123,7 +120,12 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_menu_main);
+            <string>if (state == MenuTransition.Exit) {
+    room_goto(r_menu_options);
+} else {
+    state = MenuTransition.Exit;
+}
+
 </string>
           </argument>
         </arguments>
@@ -146,7 +148,12 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy();
+            <string>if (state == MenuTransition.Exit) {
+    room_goto(r_test);
+} else {
+    state = MenuTransition.Exit;
+}
+
 </string>
           </argument>
         </arguments>
@@ -169,18 +176,12 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw Transparent Background
+            <string>draw_set_alpha(1);
 
-draw_set_colour(c_black);
-draw_set_alpha(0.75 * alpha);
-
-draw_rectangle(view_xview[menu_view], view_yview[0], view_xview[menu_view] + view_wview[menu_view], view_yview[menu_view] + view_hview[menu_view], false);
-
-draw_set_alpha(alpha);
+draw_sprite_ext(s_title, 0, 80, 80, 0.75, 0.75, title_sin, c_white, 1);
 
 event_inherited();
 
-draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

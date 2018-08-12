@@ -3,9 +3,9 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100002</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>o_menu_parent</parentName>
+  <parentName>o_menu_transition</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,33 +25,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Create Menu Items
-
-items[0] = ds_map_create();
-ds_map_add(items[0], MenuItem.Text, 'Resume');
-ds_map_add(items[0], MenuItem.Type, MenuItemType.Action);
+            <string>items[0] = ds_map_create();
+ds_map_add(items[0], MenuItem.Text, 'Fullscreen: ' + f_bool_string(window_get_fullscreen()));
+ds_map_add(items[0], MenuItem.Type, MenuItemType.Variable);
 ds_map_add(items[0], MenuItem.Enabled, true);
+
 items[1] = ds_map_create();
-ds_map_add(items[1], MenuItem.Text, 'Exit to Main Menu');
-ds_map_add(items[1], MenuItem.Type, MenuItemType.Action);
+ds_map_add(items[1], MenuItem.Text, 'Music: ' + f_float_percent(o_main.music, true));
+ds_map_add(items[1], MenuItem.Type, MenuItemType.Variable);
 ds_map_add(items[1], MenuItem.Enabled, true);
+
 items[2] = ds_map_create();
-ds_map_add(items[2], MenuItem.Text, 'Exit to Desktop');
-ds_map_add(items[2], MenuItem.Type, MenuItemType.Action);
+ds_map_add(items[2], MenuItem.Text, 'SFX: ' + f_float_percent(o_main.sfx, true));
+ds_map_add(items[2], MenuItem.Type, MenuItemType.Variable);
 ds_map_add(items[2], MenuItem.Enabled, true);
 
-offset_y = 32;
+items[3] = ds_map_create();
+ds_map_add(items[3], MenuItem.Text, '&lt; Back');
+ds_map_add(items[3], MenuItem.Type, MenuItemType.Action);
+ds_map_add(items[3], MenuItem.Enabled, true);
+
+offset_y = 64;
 
 event_inherited();
 
-alpha = 0;
-step = MenuTransition.Enter;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -68,16 +71,12 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (step == MenuTransition.Enter) {
-    if (alpha &lt; 1) {
-        alpha += 0.05;
-    } else {
-        alpha = 1;
-        step = MenuTransition.Main;
-    }
+            <string>if (state == MenuTransition.Exit) {
+    room_goto(r_menu_main);
 } else {
-    event_inherited();
+    state = MenuTransition.Exit;
 }
+
 </string>
           </argument>
         </arguments>
@@ -100,7 +99,14 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>game_end();
+            <string>/// SFX Level
+
+var _horz = f_key_down(Controls.Right) - f_key_down(Controls.Left);
+
+o_main.sfx = clamp(o_main.sfx + (_horz * 0.1), 0, 1);
+
+ds_map_replace(items[2], MenuItem.Text, 'SFX: ' + f_float_percent(o_main.sfx, true));
+
 </string>
           </argument>
         </arguments>
@@ -123,7 +129,14 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(r_menu_main);
+            <string>/// Music Level
+
+var _horz = f_key_down(Controls.Right) - f_key_down(Controls.Left);
+
+o_main.music = clamp(o_main.music + (_horz * 0.1), 0, 1);
+
+ds_map_replace(items[1], MenuItem.Text, 'Music: ' + f_float_percent(o_main.music, true));
+
 </string>
           </argument>
         </arguments>
@@ -146,41 +159,10 @@ step = MenuTransition.Enter;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw Transparent Background
+            <string>var fs = !window_get_fullscreen();
 
-draw_set_colour(c_black);
-draw_set_alpha(0.75 * alpha);
-
-draw_rectangle(view_xview[menu_view], view_yview[0], view_xview[menu_view] + view_wview[menu_view], view_yview[menu_view] + view_hview[menu_view], false);
-
-draw_set_alpha(alpha);
-
-event_inherited();
-
-draw_set_alpha(1);
+f_fullscreen(fs);
+ds_map_replace(items[0], MenuItem.Text, 'Fullscreen: ' + f_bool_string(fs));
 </string>
           </argument>
         </arguments>
